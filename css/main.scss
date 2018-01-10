@@ -116,5 +116,58 @@ margin:auto;
 .btn-sidebar{
   border-radius:0;
   background:#3a4357;
+}
 
+.form-default{
+  position: relative;
+      max-width: 500px;
+      margin: auto;
+      text-align: center;
+      border-radius: 4px;
+      padding: 20px;
+}
+
+input{
+  border: 0;
+background: #fff;
+border-radius: 4px;
+height: 35px;
+padding: 5px;
+width: 100%;
+margin-bottom: 10px;
+font-size: 12pt;
+color: #242b3c;
+}
+
+textarea{
+  border: 0;
+background: #fff;
+border-radius: 4px;
+padding: 5px;
+width: 100%;
+margin-bottom: 10px;
+font-size: 12pt;
+color: #242b3c;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:#242b3c;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+color:#242b3c;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+color:#242b3c;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:#242b3c;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+color:#242b3c;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+color:#242b3c;
 }
