@@ -80,6 +80,17 @@ margin:auto;
   border-radius:4px;
 }
 
+.btn-edit{
+  background:#3a4357;
+}
+
+.btn-use{
+  background:#00d010;
+}
+.btn-remove{
+  background:#d80000;
+}
+
 .btn-sidebar{
   border-radius:0;
   background:#3a4357;
@@ -105,7 +116,7 @@ margin:auto;
 
 .template-box{
   width: 250px;
-  height: 250px;
+  min-height: 250px;
   border-radius: 4px;
   margin: 10px;
   background:#fff;
@@ -118,6 +129,9 @@ margin:auto;
     text-align:center;
     background:$heading-background;
     color:#fff;
+  }
+  .body{
+    padding:20px;
   }
 }
 .template-box:hover{
