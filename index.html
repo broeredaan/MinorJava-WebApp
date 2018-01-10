@@ -7,11 +7,31 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
-        <link rel="stylesheet" href="css/admin.min.css">
+        <link rel="stylesheet" href="css/main.min.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     </head>
     <body>
-
+      <nav class="nav">
+        <img class="logo" src="images/logo_nhlstenden.svg">
+      </nav>
+      <div class="main">
+        <h2>Lorem ipsum</h2>
+        <form action=""  class="form-default" method="post">
+    <div class="form-item">
+        <!-- <label for="name">Name:</label> -->
+        <input type="text" placeholder="Name" id="name" name="user_name">
+    </div>
+    <div class="form-item">
+        <!-- <label for="mail">E-mail:</label> -->
+        <input type="email"  placeholder="Email" id="mail" name="user_mail">
+    </div>
+          <div class="form-item">
+        <!-- <label for="msg">Message:</label> -->
+        <textarea id="msg" rows="10" name="user_message"></textarea>
+        <input type="submit" class="btn btn-submit" value="submit">
+    </div>
+</form>
+      </div>
        <script src="js/angular.min.js"></script>
        <script src="js/main.js"></script>
     </body>
