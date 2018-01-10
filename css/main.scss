@@ -1,3 +1,7 @@
+$sidebar-background: #242b3c;
+$heading-background: #242b3c;
+$nav-background:#3a4357;
+
 html{
   width:100%;
   height:100%;
@@ -15,10 +19,19 @@ body{
   display:flex;
   width:100%;
 }
+
+
+.sidebar-wrapper{
+  width:200px;
+  height:100%;
+  position: relative;
+  flex: 0 0 200px;
+}
+
 .sidebar{
   width:200px;
   height:100%;
-  background:#242b3c;
+  background: $sidebar-background;
   position:fixed;
 
   .logo{
@@ -34,59 +47,13 @@ body{
   }
 }
 
-.sidebar-wrapper{
-  width:200px;
-  height:100%;
-  position: relative;
-  flex: 0 0 200px;
-}
-
-.main{
-  flex:1;
-  height:100%;
-}
-
-h2{
-  margin-top:25px;
-  font-size:25pt;
-  text-align: center;
-}
-
-.template-row{
-  width:100%;
-  display:flex;
-  flex-wrap:wrap;
-  justify-content: center;
-}
-
-.template-box{
-  width: 250px;
-  height: 250px;
-  border-radius: 4px;
-  margin: 10px;
-  background:#fff;
-  overflow: hidden;
-  transition:all .5s ease;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(177, 177, 177, 0.23);
-  .title{
-    padding:20px;
-    box-sizing:border-box;
-    text-align:center;
-    background:#242b3c;
-    color:#fff;
-  }
-}
-.template-box:hover{
-   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
-
 nav{
   ul{
     padding:0;
     margin:0;
     list-style-type:none;
     li{
-      background:#3a4357;
+      background:$nav-background;
       padding:20px;
       cursor:pointer;
       transition:all .5s ease;
@@ -118,6 +85,45 @@ margin:auto;
   background:#3a4357;
 }
 
+.main{
+  flex:1;
+  height:100%;
+
+  h2{
+    margin-top:25px;
+    font-size:25pt;
+    text-align: center;
+  }
+}
+
+.template-row{
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: center;
+}
+
+.template-box{
+  width: 250px;
+  height: 250px;
+  border-radius: 4px;
+  margin: 10px;
+  background:#fff;
+  overflow: hidden;
+  transition:all .5s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(177, 177, 177, 0.23);
+  .title{
+    padding:20px;
+    box-sizing:border-box;
+    text-align:center;
+    background:$heading-background;
+    color:#fff;
+  }
+}
+.template-box:hover{
+   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
 .form-default{
   position: relative;
       max-width: 500px;
@@ -129,45 +135,44 @@ margin:auto;
 
 input{
   border: 0;
-background: #fff;
-border-radius: 4px;
-height: 35px;
-padding: 5px;
-width: 100%;
-margin-bottom: 10px;
-font-size: 12pt;
-color: #242b3c;
+  background: #fff;
+  border-radius: 4px;
+  height: 35px;
+  padding: 5px;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 12pt;
+  color: #242b3c;
 }
 
 textarea{
   border: 0;
-background: #fff;
-border-radius: 4px;
-padding: 5px;
-width: 100%;
-margin-bottom: 10px;
-font-size: 12pt;
-color: #242b3c;
+  background: #fff;
+  border-radius: 4px;
+  padding: 5px;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 12pt;
+  color: #242b3c;
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
   color:#242b3c;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-color:#242b3c;
+  color:#242b3c;
    opacity:  1;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-color:#242b3c;
+  color:#242b3c;
    opacity:  1;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
    color:#242b3c;
 }
 ::-ms-input-placeholder { /* Microsoft Edge */
-color:#242b3c;
+  color:#242b3c;
 }
-
 ::placeholder { /* Most modern browsers support this now. */
-color:#242b3c;
+  color:#242b3c;
 }
