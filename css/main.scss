@@ -24,6 +24,14 @@ body{
   .logo{
     padding:20px;
   }
+
+  .sidebar-bottom{
+    height:100px;
+    width:100%;
+    position:absolute;
+    bottom:0;
+    text-align:center;
+  }
 }
 
 .sidebar-wrapper{
@@ -83,9 +91,30 @@ nav{
       cursor:pointer;
       transition:all .5s ease;
       color:#fff;
+      font-size:13pt;
+
+      .fa-lg{
+        float:right;
+      }
       &:hover{
         background:#333b4a;
       }
     }
   }
+}
+
+.btn{
+  border:0;
+margin:auto;
+  padding:10px;
+  cursor:pointer;
+  background:#242b3c;
+  color:#fff;
+  border-radius:4px;
+}
+
+.btn-sidebar{
+  border-radius:0;
+  background:#3a4357;
+
 }
