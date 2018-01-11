@@ -1,0 +1,93 @@
+$sidebar-background: #242b3c;
+$heading-background: #242b3c;
+$nav-background:#3a4357;
+$body-background:#242b3c;
+
+html{
+  width:100%;
+  height:100%;
+}
+
+body{
+  height:100%;
+  padding:0;
+  margin:0;
+  font-family: 'Montserrat', sans-serif;
+  background: $body-background;
+}
+
+.main{
+  width:100%;
+  height:100%;
+  padding:20px;
+  text-align:center;
+  box-sizing:border-box;
+  color:#fff;
+  margin-top:50px;
+}
+
+form{
+  padding:20px;
+  border-radius:4px;
+  max-width:500px;
+  margin:auto;
+}
+
+input{
+  border: 0;
+  background: #fff;
+  border-radius: 4px;
+  height: 35px;
+  padding: 5px;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 12pt;
+  color: #242b3c;
+  box-sizing: border-box;
+}
+
+textarea{
+  border: 0;
+  background: #fff;
+  border-radius: 4px;
+  padding: 5px;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 12pt;
+  color: #242b3c;
+  box-sizing: border-box;
+}
+
+.btn{
+  border:0;
+  margin:auto;
+  padding:10px;
+  cursor:pointer;
+  background:#242b3c;
+  color:#fff;
+  border-radius:4px;
+  box-sizing:border-box;
+}
+
+nav{
+  margin:0;
+  padding:0;
+  position:fixed;
+  width:100%;
+  height:75px;
+  top:0;
+  background:$nav-background;
+    .logo{
+      height:75px;
+      box-sizing:border-box;
+      padding:5px;
+      margin-left:10px;
+
+  }
+}
+
+.btn-submit{
+  background:#424f6d;
+  width:100%;
+
+}
