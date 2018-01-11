@@ -1,0 +1,40 @@
+<!-- ALL TEMPLATES -->
+<div ng-if="!isCreateTemplate && !isViewTemplate">
+    <div ng-if="loading"><h2><i class="fas fa-database fa-spin"></i></h2></div>
+    <div ng-if="!loading">
+        <h2>Templates</h2>
+        <div class="template-row">
+            <div class="template-box" ng-click="createTemplate()">
+                <div class="title">NEW TEMPLATE</div>
+                <div class="add"><h1><i class="fa fa-plus"></i></h1></div>
+            </div>
+            <div class="template-box" ng-repeat="template in templates" ng-click="viewTemplate(template)"><div class="title">{{template.name}}</div></div>
+        </div>
+    </div>
+</div>
+
+<!-- NEW TEMPLATE -->
+<div ng-if="isCreateTemplate">
+    <h1 class="btn-close" ng-click="closeCreateTemplate()"><i class="fa fa-times"></i></h1>
+    <form action=""  class="form-default" method="post">
+        <div class="form-item">
+            <!-- <label for="name">Name:</label> -->
+            <input type="text" placeholder="Name" id="name" name="user_name">
+        </div>
+        <div class="form-item">
+            <!-- <label for="mail">E-mail:</label> -->
+            <input type="email"  placeholder="Email" id="mail" name="user_mail">
+        </div>
+        <div class="form-item">
+            <!-- <label for="msg">Message:</label> -->
+            <textarea id="msg" rows="10" name="user_message"></textarea>
+        </div>
+    </form>
+</div>
+
+<!-- VIEW TEMPLATE -->
+<div ng-if="isViewTemplate">
+    <h1 class="btn-close" ng-click="closeViewTemplate()"><i class="fa fa-times"></i></h1>
+    {{singleTemplate.name}}<br>
+    {{singleTemplate.id}}
+</div>

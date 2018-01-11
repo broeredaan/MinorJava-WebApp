@@ -1,0 +1,40 @@
+<!-- ALL GROUPS -->
+<div ng-if="!isCreateGroup && !isViewGroup">
+    <div ng-if="loading"><h2><i class="fas fa-database fa-spin"></i></h2></div>
+    <div ng-if="!loading">
+        <h2>Groups</h2>
+        <div class="template-row">
+            <div class="template-box" ng-click="createGroup()">
+                <div class="title">NEW GROUP</div>
+                <div class="add"><h1><i class="fa fa-plus"></i></h1></div>
+            </div>
+            <div class="template-box" ng-repeat="group in groups" ng-click="viewGroup(group)"><div class="title">{{group.name}}</div></div>
+        </div>
+    </div>
+</div>
+
+<!-- NEW TEMPLATE -->
+<div ng-if="isCreateGroup">
+    <h1 class="btn-close" ng-click="closeCreateGroup()"><i class="fa fa-times"></i></h1>
+    <form action=""  class="form-default" method="post">
+        <div class="form-item">
+            <!-- <label for="name">Name:</label> -->
+            <input type="text" placeholder="Name" id="name" name="user_name">
+        </div>
+        <div class="form-item">
+            <!-- <label for="mail">E-mail:</label> -->
+            <input type="email"  placeholder="Email" id="mail" name="user_mail">
+        </div>
+        <div class="form-item">
+            <!-- <label for="msg">Message:</label> -->
+            <textarea id="msg" rows="10" name="user_message"></textarea>
+        </div>
+    </form>
+</div>
+
+<!-- VIEW TEMPLATE -->
+<div ng-if="isViewGroup">
+    <h1 class="btn-close" ng-click="closeViewGroup()"><i class="fa fa-times"></i></h1>
+    {{singleGroup.name}}<br>
+    {{singleGroup.id}}
+</div>
