@@ -2,7 +2,7 @@ $sidebar-background: #242b3c;
 $heading-background: #242b3c;
 $nav-background:#3a4357;
 $body-background:#242b3c;
-$submit-background:#424f6d;
+$button-background:#242b3c;
 
 html{
   width:100%;
@@ -62,13 +62,15 @@ textarea{
 .btn{
   border:0;
   margin:auto;
+  padding:10px;
   cursor:pointer;
-  min-height:35px;
-  background:#242b3c;
+  background:$button-background;
   color:#fff;
   border-radius:4px;
   box-sizing:border-box;
-  transition: all .5s ease;
+  &:hover{
+    background: darken($button-background, 5%); 
+  }
 }
 
 nav{
@@ -79,19 +81,15 @@ nav{
   height:75px;
   top:0;
   background:$nav-background;
-  .logo{
-    height:75px;
-    box-sizing:border-box;
-    padding:5px;
-    margin-left:10px;
-
+    .logo{
+      height:75px;
+      box-sizing:border-box;
+      padding:5px;
+      margin-left:10px;
   }
 }
 
 .btn-submit{
-  background:$submit-background;
+  background:#424f6d;
   width:100%;
- &:hover{
-   background:lighten( $submit-background, 5% );
- }
 }
