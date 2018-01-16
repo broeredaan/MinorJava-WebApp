@@ -1,8 +1,9 @@
 $sidebar-background: #242b3c;
 $heading-background: #242b3c;
-$nav-background:#3a4357;
-$button-background:#242b3c;
-$button-sidebar-background:#3a4357;
+$nav-background: #3a4357;
+$button-background: #242b3c;
+$button-sidebar-background: #3a4357;
+$submit-background: #424f6d;
 
 html{
   width:100%;
@@ -118,6 +119,14 @@ nav{
   float: right;
   margin-right: 32px;
   cursor: pointer;
+}
+
+.btn-submit, .btn-create{
+  background:$submit-background;
+  width:100%;
+  &:hover{
+    background:lighten( $submit-background, 5% );
+  }
 }
 
 .main{

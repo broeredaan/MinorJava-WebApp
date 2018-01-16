@@ -1,7 +1,10 @@
 angular.module("myApp")
     .controller("TemplatesCtrl", function($scope, TemplateService, $timeout) {
         $scope.loading = true;
+        $scope.withDescription = false;
         $scope.$emit('updateMenu', true);
+
+        $scope.errorMessage = "";
 
         refreshTemplates();
 
@@ -17,17 +20,16 @@ angular.module("myApp")
                 alert("Error getting data from server");
                 $scope.loading = false;
             });
-        };
+        }
 
         $scope.createTemplate = function() {
             $scope.isCreateTemplate = true;
-            console.log("create new template");
         };
 
         $scope.closeCreateTemplate = function() {
             refreshTemplates();
             $scope.isCreateTemplate = false;
-        }
+        };
 
         $scope.viewTemplate = function(template) {
             $scope.singleTemplate = template;
@@ -37,5 +39,42 @@ angular.module("myApp")
         $scope.closeViewTemplate = function() {
             refreshTemplates();
             $scope.isViewTemplate = false;
+        };
+
+        //New Template workings
+        $scope.changeGrade = function() {
+
+        };
+
+        $scope.changeWithDesciption = function() {
+            $scope.withDescription = !$scope.withDescription;
+        };
+
+        $scope.addPersonToList = function(name, email) {
+            $scope.errorMessage = "";
+            if(name != "" && email != "") {
+                if(validateEmail(email)) {
+                    $scope.errorMessage = "";
+                    $scope.newPersons.push({"name": name, "email": email});
+                    $scope.name = "";
+                    $scope.email = "";
+                }
+                else {
+                    $scope.errorMessage = "Incorrect email."
+                }
+            }
+            else {
+                $scope.errorMessage = "Please fill in a name and email";
+            }
+
+        };
+
+        $scope.removePersonFromList = function(index) {
+            $scope.newPersons.splice(index, 1);
+        };
+
+        $scope.submit = function() {
+            console.log($scope.grade);
+            console.log($scope.withDescription);
         }
     });

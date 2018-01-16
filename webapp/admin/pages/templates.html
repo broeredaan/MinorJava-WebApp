@@ -16,20 +16,24 @@
 <!-- NEW TEMPLATE -->
 <div ng-if="isCreateTemplate">
     <h1 class="btn-close" ng-click="closeCreateTemplate()"><i class="fa fa-times"></i></h1>
-    <form action=""  class="form-default" method="post">
+
+    <div class="form-default">
         <div class="form-item">
-            <!-- <label for="name">Name:</label> -->
-            <input type="text" placeholder="Name" id="name" name="user_name">
+            <div class="form-item">
+                <!-- <label for="msg">Message:</label> -->
+                <input type="number" name="gradeDifference" step="any" value="7" ng-model="gradeDifference">Max grade difference
+            </div>
+            <div class="form-item">
+                <!-- <label for="msg">Message:</label> -->
+                <input type="checkbox" name="withDescription" value="Yes" ng-model="withDesciption">Make group write description
+            </div>
+            <div class="form-item">
+                <!-- <label for="msg">Message:</label> -->
+                <button type="button" class="btn btn-submit" ng-click="submit()">Submit <i class="fas fa-sign-in-alt fa-lg"></i></button>
+            </div>
         </div>
-        <div class="form-item">
-            <!-- <label for="mail">E-mail:</label> -->
-            <input type="email"  placeholder="Email" id="mail" name="user_mail">
-        </div>
-        <div class="form-item">
-            <!-- <label for="msg">Message:</label> -->
-            <textarea id="msg" rows="10" name="user_message"></textarea>
-        </div>
-    </form>
+    </div>
+
 </div>
 
 <!-- VIEW TEMPLATE -->

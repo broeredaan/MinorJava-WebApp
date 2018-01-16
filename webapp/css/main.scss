@@ -91,6 +91,7 @@ nav{
 .btn-submit{
   background:$submit-background;
   width:100%;
+
  &:hover{
    background:lighten( $submit-background, 5% );
  }

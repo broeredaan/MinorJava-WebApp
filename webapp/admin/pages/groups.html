@@ -17,19 +17,48 @@
 <div ng-if="isCreateGroup">
     <h1 class="btn-close" ng-click="closeCreateGroup()"><i class="fa fa-times"></i></h1>
     <form action=""  class="form-default" method="post">
+        <div class="form-item" ng-if="errorMessage">
+            {{errorMessage}}
+        </div>
         <div class="form-item">
             <!-- <label for="name">Name:</label> -->
-            <input type="text" placeholder="Name" id="name" name="user_name">
+            <input type="text" placeholder="Name" id="name" name="user_name" ng-model="name">
         </div>
         <div class="form-item">
             <!-- <label for="mail">E-mail:</label> -->
-            <input type="email"  placeholder="Email" id="mail" name="user_mail">
+            <input type="text"  placeholder="Email" id="mail" name="user_mail" ng-model="email">
         </div>
         <div class="form-item">
             <!-- <label for="msg">Message:</label> -->
-            <textarea id="msg" rows="10" name="user_message"></textarea>
+            <button type="button" class="btn btn-create" ng-click="addPersonToList(name, email)">Add <i class="fas fa-plus fa-lg"></i></button>
         </div>
     </form>
+    <div class="form-default" ng-if="newPersons.length < 2">
+        <div class="form-item">
+            Atleast 2 persons are needed to create a group.
+        </div>
+    </div>
+    <div class="form-default" ng-if="newPersons.length > 0">
+        <table style="width:100%;">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+            <tr ng-repeat="person in newPersons">
+                <td>{{person.name}}</td>
+                <td>{{person.email}}</td>
+                <td><button ng-click="removePersonFromList($index)"><i class="fa fa-trash"></i></button></td>
+            </tr>
+        </table><br>
+        <div class="form-item" ng-if="newPersons.length > 1">
+            <div class="form-item">
+                <!-- <label for="msg">Message:</label> -->
+                <input type="number" name="grade" value="7" ng-change="changeGrade()" ng-model="grade">Group Grade
+            </div>
+            <!-- <label for="msg">Message:</label> -->
+            <button type="button" class="btn btn-submit" ng-click="submit()">Submit <i class="fas fa-sign-in-alt fa-lg"></i></button>
+        </div>
+    </div>
 </div>
 
 <!-- VIEW TEMPLATE -->
