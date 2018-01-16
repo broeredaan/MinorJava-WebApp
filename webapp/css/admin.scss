@@ -18,6 +18,7 @@ body{
   background: #ebebeb;
 }
 
+
 #view {
   flex:1;
   height:100%;
@@ -110,7 +111,7 @@ nav{
 
 .btn-login {
   border-radius: 4px;
-  width: 100px;
+  width: 100%;
   background:#3a4357;
   float: left;
 }
@@ -119,6 +120,26 @@ nav{
   float: right;
   margin-right: 32px;
   cursor: pointer;
+  border:0;
+  background:inherit;
+  padding:0;
+  font-size:25pt;
+  transition: all .2s ease;
+  &:hover{
+    font-size:28pt;
+  }
+}
+
+.btn-add{
+  border:0;
+  background: inherit;
+  font-size:25pt;
+  transition: all .2s ease;
+  cursor:pointer;
+  &:hover{
+    font-size:28pt;
+  }
+
 }
 
 .btn-submit, .btn-create{
@@ -132,7 +153,7 @@ nav{
 .main{
   flex:1;
   height:100%;
-
+  overflow: auto; /* clearfix */
   h2{
     margin-top:25px;
     font-size:25pt;
@@ -182,6 +203,13 @@ nav{
       padding: 20px;
 }
 
+.form-login{
+  max-width:400px;
+  margin:auto;
+  text-align:center;
+  padding:20px;
+}
+
 input{
   border: 0;
   background: #fff;
@@ -193,6 +221,7 @@ input{
   font-size: 12pt;
   color: #242b3c;
   box-shadow: 1px 1px rgba(86, 86, 86, 0.12941176470588237);
+  box-sizing:border-box;
 }
 
 textarea{
@@ -205,6 +234,7 @@ textarea{
   font-size: 12pt;
   color: #242b3c;
   box-shadow: 1px 1px rgba(86, 86, 86, 0.12941176470588237);
+  box-sizing:border-box;
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */

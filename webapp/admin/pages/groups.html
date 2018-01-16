@@ -6,7 +6,7 @@
         <div class="template-row">
             <div class="template-box" ng-click="createGroup()">
                 <div class="title">NEW GROUP</div>
-                <div class="add"><h1><i class="fa fa-plus"></i></h1></div>
+                <div class="add"><button class="btn-add"><i class="fa fa-plus"></i></button></div>
             </div>
             <div class="template-box" ng-repeat="group in groups" ng-click="viewGroup(group)"><div class="title">{{group.name}}</div></div>
         </div>
@@ -15,11 +15,29 @@
 
 <!-- NEW TEMPLATE -->
 <div ng-if="isCreateGroup">
-    <h1 class="btn-close" ng-click="closeCreateGroup()"><i class="fa fa-times"></i></h1>
+    <button class="btn-close" ng-click="closeCreateGroup()"><i class="fa fa-times"></i></button>
+    <h2>Create new Group</h2>
+
+    <!-- @Daan Dit als eerst, ook het stuk met het invullen van het cijfer -->
     <form action=""  class="form-default" method="post">
         <div class="form-item" ng-if="errorMessage">
             {{errorMessage}}
         </div>
+        <div class="form-item">
+            <!-- <label for="name">Name:</label> -->
+            <input type="text" placeholder="Group Name" id="name" name="group_name" ng-model="name">
+            <div class="form-item" ng-if="newPersons.length > 1">
+                <div class="form-item">
+                    <!-- <label for="msg">Message:</label> -->
+                    <input type="number" name="grade" value="7" ng-change="changeGrade()" ng-model="grade">Group Grade
+                </div>
+                <!-- <label for="msg">Message:</label> -->
+                <button type="button" class="btn btn-submit" ng-click="submit()">Submit <i class="fas fa-sign-in-alt fa-lg"></i></button>
+            </div>
+        </div>
+    <!-- @Daan Dit als tweede -->
+      </form>
+          <form action=""  class="form-default" method="post">
         <div class="form-item">
             <!-- <label for="name">Name:</label> -->
             <input type="text" placeholder="Name" id="name" name="user_name" ng-model="name">
@@ -39,7 +57,7 @@
         </div>
     </div>
     <div class="form-default" ng-if="newPersons.length > 0">
-        <table style="width:100%;">
+        <table>
             <tr>
                 <th>Name</th>
                 <th>Email</th>
@@ -49,15 +67,7 @@
                 <td>{{person.email}}</td>
                 <td><button ng-click="removePersonFromList($index)"><i class="fa fa-trash"></i></button></td>
             </tr>
-        </table><br>
-        <div class="form-item" ng-if="newPersons.length > 1">
-            <div class="form-item">
-                <!-- <label for="msg">Message:</label> -->
-                <input type="number" name="grade" value="7" ng-change="changeGrade()" ng-model="grade">Group Grade
-            </div>
-            <!-- <label for="msg">Message:</label> -->
-            <button type="button" class="btn btn-submit" ng-click="submit()">Submit <i class="fas fa-sign-in-alt fa-lg"></i></button>
-        </div>
+        </table>
     </div>
 </div>
 
