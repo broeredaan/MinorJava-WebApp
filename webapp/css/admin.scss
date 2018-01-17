@@ -87,7 +87,7 @@ nav{
 
 .btn{
   border:0;
-  margin:auto;
+  margin:4px;
   padding:10px;
   min-height:35px;
   cursor:pointer;
@@ -150,6 +150,14 @@ nav{
   }
 }
 
+.btn-next {
+  float: right;
+}
+
+.btn-previous {
+  float: left;
+}
+
 .main{
   flex:1;
   height:100%;
@@ -210,6 +218,15 @@ nav{
   padding:20px;
 }
 
+.error {
+  color: red;
+  margin: 10px;
+}
+
+.info {
+  margin: 10px;
+}
+
 input{
   border: 0;
   background: #fff;
@@ -239,21 +256,25 @@ textarea{
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
   color:#242b3c;
+  opacity: 0.5;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
   color:#242b3c;
-   opacity:  1;
+  opacity: 0.5;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
   color:#242b3c;
-   opacity:  1;
+  opacity: 0.5;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:#242b3c;
+  color:#242b3c;
+  opacity: 0.5;
 }
 ::-ms-input-placeholder { /* Microsoft Edge */
   color:#242b3c;
+  opacity: 0.5;
 }
 ::placeholder { /* Most modern browsers support this now. */
   color:#242b3c;
+  opacity: 0.5;
 }

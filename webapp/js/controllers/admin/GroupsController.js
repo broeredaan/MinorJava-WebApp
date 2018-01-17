@@ -2,6 +2,9 @@ angular.module("myApp")
     .controller("GroupsCtrl", function($scope, GroupsService, $timeout) {
         $scope.loading = true;
         $scope.grade = 7;
+        $scope.groupName = "";
+        $scope.state = "general";
+        $scope.title = "Create new group";
         $scope.$emit('updateMenu', true);
 
         $scope.errorMessage = "";
@@ -87,12 +90,48 @@ angular.module("myApp")
             $scope.newPersons.splice(index, 1);
         };
 
+        $scope.next = function(name, grade) {
+            console.log(name);
+            console.log(grade);
+            if(name == "" || name == null) {
+                $scope.errorMessage = "Please fill in a title";
+            }
+            else if(grade < 1 || grade > 10 || grade == null || !angular.isNumber(grade)) {
+                $scope.errorMessage = "Please fill in a proper grade";
+            }
+            else {
+                $scope.grade = grade;
+                $scope.groupName = name;
+                $scope.state = "members";
+                $scope.title = name;
+                $scope.errorMessage = "";
+            }
+        };
+
+        $scope.previous = function() {
+            $scope.errorMessage = "";
+            $scope.state = "general";
+            $scope.title = "Create new group";
+        };
+
         $scope.submit = function() {
             if($scope.newPersons.length < 2) {
                 $scope.errorMessage = "There are not enough members added to the group."
             }
-            console.log($scope.newPersons);
-            console.log($scope.withDescription);
-            $scope.errorMessage = "";
-        }
+            else {
+                console.log($scope.newPersons);
+                $scope.errorMessage = "";
+            }
+
+        };
+
+        $scope.changeGrade = function(grade) {
+            $scope.grade = grade;
+            console.log(grade);
+        };
+
+        $scope.changeGroupName = function(name) {
+            console.log(name);
+            $scope.groupName = name;
+        };
     });

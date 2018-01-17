@@ -61,7 +61,7 @@ nav ul {
 
 .btn {
   border: 0;
-  margin: auto;
+  margin: 4px;
   padding: 10px;
   min-height: 35px;
   cursor: pointer;
@@ -81,14 +81,30 @@ nav ul {
 
 .btn-login {
   border-radius: 4px;
-  width: 100px;
+  width: 100%;
   background: #3a4357;
   float: left; }
 
 .btn-close {
   float: right;
   margin-right: 32px;
+  cursor: pointer;
+  border: 0;
+  background: inherit;
+  padding: 0;
+  font-size: 25pt;
+  transition: all .2s ease; }
+  .btn-close:hover {
+    font-size: 28pt; }
+
+.btn-add {
+  border: 0;
+  background: inherit;
+  font-size: 25pt;
+  transition: all .2s ease;
   cursor: pointer; }
+  .btn-add:hover {
+    font-size: 28pt; }
 
 .btn-submit, .btn-create {
   background: #424f6d;
@@ -96,9 +112,17 @@ nav ul {
   .btn-submit:hover, .btn-create:hover {
     background: #4c5b7d; }
 
+.btn-next {
+  float: right; }
+
+.btn-previous {
+  float: left; }
+
 .main {
   flex: 1;
-  height: 100%; }
+  height: 100%;
+  overflow: auto;
+  /* clearfix */ }
   .main h2 {
     margin-top: 25px;
     font-size: 25pt;
@@ -141,6 +165,19 @@ nav ul {
   border-radius: 4px;
   padding: 20px; }
 
+.form-login {
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+  padding: 20px; }
+
+.error {
+  color: red;
+  margin: 10px; }
+
+.info {
+  margin: 10px; }
+
 input {
   border: 0;
   background: #fff;
@@ -151,7 +188,8 @@ input {
   margin-bottom: 10px;
   font-size: 12pt;
   color: #242b3c;
-  box-shadow: 1px 1px rgba(86, 86, 86, 0.1294117647); }
+  box-shadow: 1px 1px rgba(86, 86, 86, 0.1294117647);
+  box-sizing: border-box; }
 
 textarea {
   border: 0;
@@ -162,32 +200,37 @@ textarea {
   margin-bottom: 10px;
   font-size: 12pt;
   color: #242b3c;
-  box-shadow: 1px 1px rgba(86, 86, 86, 0.1294117647); }
+  box-shadow: 1px 1px rgba(86, 86, 86, 0.1294117647);
+  box-sizing: border-box; }
 
 ::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */
-  color: #242b3c; }
+  color: #242b3c;
+  opacity: 0.5; }
 
 :-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
   color: #242b3c;
-  opacity: 1; }
+  opacity: 0.5; }
 
 ::-moz-placeholder {
   /* Mozilla Firefox 19+ */
   color: #242b3c;
-  opacity: 1; }
+  opacity: 0.5; }
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: #242b3c; }
+  color: #242b3c;
+  opacity: 0.5; }
 
 ::-ms-input-placeholder {
   /* Microsoft Edge */
-  color: #242b3c; }
+  color: #242b3c;
+  opacity: 0.5; }
 
 ::placeholder {
   /* Most modern browsers support this now. */
-  color: #242b3c; }
+  color: #242b3c;
+  opacity: 0.5; }
 
 /*# sourceMappingURL=admin.css.map */
