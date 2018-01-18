@@ -5,12 +5,12 @@ angular.module("myApp")
                 method: 'GET',
                 url: "http://localhost:8080/v1/template?userToken="+token
             });
-        }
+        };
 
         this.newTemplate = function(grade, desc, title, token) {
             return $http({
                 method: 'PUT',
-                url: "http://localhost:8080/v1/template/create
+                url: "http://localhost:8080/v1/template/create",
                 data: {
                     userToken: token,
                     name: title,

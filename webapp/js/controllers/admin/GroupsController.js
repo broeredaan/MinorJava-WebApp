@@ -1,8 +1,6 @@
 angular.module("myApp")
-    .controller("GroupsCtrl", function($scope, GroupsService, $timeout, $location, $cookies) {
-        if($cookies.get("token") == null) {
-            $location.path("/");
-        }
+    .controller("GroupsCtrl", function($scope, GroupsService, TemplateService, LoginService, $timeout, $location, $cookies) {
+        LoginService.checkLogin();
         $scope.loading = true;
         $scope.grade = 7;
         $scope.groupName = "";
@@ -27,9 +25,28 @@ angular.module("myApp")
                     $scope.loading = false;
                 }, 750)
 
-            }, function() {
-                alert("Error getting data from server");
-                $scope.loading = false;
+            }, function(error) {
+                if(error.status === 401){
+                    LoginService.checkLogin(true);
+                }
+                else {
+                    alert("Error getting data from server");
+                    $scope.loading = false;
+                }
+            });
+        }
+
+        function refreshTemplates() {
+            TemplateService.getTemplates($cookies.get("token")).then(function(data) {
+                $scope.templates = data.data;
+            }, function(error) {
+                if(error.status === 401){
+                    LoginService.checkLogin(true);
+                }
+                else {
+                    alert("Error getting data from server");
+                    $scope.loading = false;
+                }
             });
         }
 
@@ -39,6 +56,7 @@ angular.module("myApp")
         }
 
         $scope.createGroup = function() {
+            refreshTemplates();
             $scope.isCreateGroup = true;
         };
 
@@ -137,4 +155,27 @@ angular.module("myApp")
             console.log(name);
             $scope.groupName = name;
         };
+
+        $scope.submit = function(title, deadline, grade) {
+            if(title == null || title == "") {
+                $scope.errorMessage = "Please fill in a Group name";
+            }
+            else if(grade == null || grade < 1 || grade > 10) {
+                $scope.errorMessage = "Please fill in a proper number from 1 to 10";
+            }
+            else {
+                console.log("wegut");
+                GroupsService.newGroup($cookies.get("token"), tid, title, deadline, grade).then(function(res) {
+                    $scope.isCreateGroup = false;
+                    refreshGroups();
+                }, function(error) {
+                    if(error.status === 401){
+                        LoginService.checkLogin(true);
+                    }
+                    else {
+                        $scope.errorMessage = "Something went wrong while creating a new group";
+                    }
+                });
+            }
+        }
     });

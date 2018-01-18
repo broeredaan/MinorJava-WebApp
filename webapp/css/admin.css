@@ -61,7 +61,7 @@ nav ul {
 
 .btn {
   border: 0;
-  margin: 4px;
+  margin: 4px 0;
   padding: 10px;
   min-height: 35px;
   cursor: pointer;
@@ -75,6 +75,7 @@ nav ul {
 
 .btn-sidebar {
   border-radius: 0;
+  width: 100%;
   background: #3a4357; }
   .btn-sidebar:hover {
     background: #444f66; }

@@ -29,16 +29,16 @@
         </div>
         <div class="form-item">
             <!-- <label for="name">Name:</label> -->
-            <input type="text" placeholder="Group Name" id="name" name="template_name" ng-model="templateName">
-            <div class="form-item">
-                <div class="form-item">
-                    <label for="grade">Group grade</label>
-                    <input type="number" placeholder="Group grade" min="1" max="10" name="grade" id="grade" ng-model="grade">
-                </div>
-                <!-- <label for="msg">Message:</label> -->
-                <button type="button" class="btn btn-next" ng-click="next(groupName, grade)">Next <i
-                        class="fas fa-arrow-right fa-lg"></i></button>
-            </div>
+            <input type="text" placeholder="Group Name" id="name" name="template_name" ng-model="groupName">
+        </div>
+        <div class="form-item">
+            <label for="grade">Group grade</label>
+            <input type="number" placeholder="Group grade" min="1" max="10" name="grade" id="grade" ng-model="grade">
+        </div>
+        <div class="form-item">
+            <!-- <label for="msg">Message:</label> -->
+            <button type="button" class="btn btn-next" ng-click="next(groupName, grade)">Next <i
+                    class="fas fa-arrow-right fa-lg"></i></button>
         </div>
     </form>
     <!-- Second part -->

@@ -18,15 +18,14 @@
     <h1 class="btn-close" ng-click="closeCreateTemplate()"><i class="fa fa-times"></i></h1>
 
     <div class="form-default">
+        <div class="form-item error" ng-if="errorMessage">
+            {{errorMessage}}
+        </div>
         <div class="form-item">
-            <input type="text" placeholder="Group Name" id="name" name="group_name" ng-model="groupName">
+            <input type="text" placeholder="Template Name" id="name" name="group_name" ng-model="templateName">
             <div class="form-item">
                 <!-- <label for="msg">Message:</label> -->
-                <input type="number" name="gradeDifference" step="any" value="7" ng-model="gradeDifference">Max grade difference
-            </div>
-            <div class="form-item">
-                <!-- <label for="msg">Message:</label> -->
-                <input type="number" name="gradeDifference" step="any" value="7" ng-model="gradeDifference">Max grade difference
+                <input type="number" min="0" max="10" placeholder="Max grade difference (number)" name="gradeDifference" step="any" value="7" ng-model="gradeDifference">
             </div>
             <div class="form-item">
                 <!-- <label for="msg">Message:</label> -->
@@ -34,7 +33,7 @@
             </div>
             <div class="form-item">
                 <!-- <label for="msg">Message:</label> -->
-                <button type="button" class="btn btn-submit" ng-click="submit(gradeDifference, withDescription)">Submit <i class="fas fa-sign-in-alt fa-lg"></i></button>
+                <button type="button" class="btn btn-submit" ng-click="submit(gradeDifference, withDescription, templateName)">Submit <i class="fas fa-sign-in-alt fa-lg"></i></button>
             </div>
         </div>
     </div>

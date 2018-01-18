@@ -1,9 +1,6 @@
 angular.module("myApp")
-    .controller("TemplatesCtrl", function($scope, TemplateService, $timeout, $cookies, $location) {
-        if($cookies.get("token") == null) {
-            $location.path("/");
-            alert("You're not logged in.");
-        }
+    .controller("TemplatesCtrl", function($scope, TemplateService, LoginService, $timeout, $cookies) {
+        LoginService.checkLogin();
         $scope.loading = true;
         $scope.withDescription = false;
         $scope.$emit('updateMenu', true);
@@ -20,9 +17,14 @@ angular.module("myApp")
                     $scope.loading = false;
                 }, 750)
 
-            }, function() {
-                alert("Error getting data from server");
-                $scope.loading = false;
+            }, function(error) {
+                if(error.status === 401){
+                    LoginService.checkLogin(true);
+                }
+                else {
+                    alert("Error getting data from server");
+                    $scope.loading = false;
+                }
             });
         }
 
@@ -46,38 +48,27 @@ angular.module("myApp")
         };
 
         //New Template workings
-        $scope.changeGrade = function() {
-
-        };
-
-        $scope.changeWithDesciption = function() {
-            $scope.withDescription = !$scope.withDescription;
-        };
-
-        $scope.addPersonToList = function(name, email) {
-            $scope.errorMessage = "";
-            if(name != "" && email != "") {
-                if(validateEmail(email)) {
-                    $scope.errorMessage = "";
-                    $scope.newPersons.push({"name": name, "email": email});
-                    $scope.name = "";
-                    $scope.email = "";
-                }
-                else {
-                    $scope.errorMessage = "Incorrect email."
-                }
-            }
-            else {
-                $scope.errorMessage = "Please fill in a name and email";
-            }
-
-        };
-
-        $scope.removePersonFromList = function(index) {
-            $scope.newPersons.splice(index, 1);
-        };
 
         $scope.submit = function(grade, desc, title) {
-            TemplateService.newTemplate(grade, desc, title, $cookies.get("token"))
+            if(title == null || title == "") {
+                $scope.errorMessage = "Please fill in a Template name";
+            }
+            else if(grade == null || grade < 0 || grade > 10) {
+                $scope.errorMessage = "Please fill in a proper number from 0 to 10";
+            }
+            else {
+                console.log("wegut");
+                TemplateService.newTemplate(grade, desc, title, $cookies.get("token")).then(function(res) {
+                    $scope.isCreateTemplate = false;
+                    refreshTemplates();
+                }, function(error) {
+                    if(error.status === 401){
+                        LoginService.checkLogin(true);
+                    }
+                    else {
+                        $scope.errorMessage = "Something went wrong while creating a new template";
+                    }
+                });
+            }
         }
     });
