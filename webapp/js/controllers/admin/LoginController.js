@@ -1,16 +1,20 @@
 angular.module("myApp")
-    .controller("LoginCtrl", function($scope, $location) {
+    .controller("LoginCtrl", function($scope, $location, LoginService, $cookies) {
         this.title = "DUUNPC";
         $scope.$emit('updateMenu', false);
 
         this.submit = function() {
             let email = this.email;
             let pass = this.password;
-            if(email == "test" && pass == "test") {
-                $location.path("/dashboard");
-            }
-            else {
-                console.log("Invalid login");
-            }
+            LoginService.login(email, pass).then(function(data) {
+                data = data.data;
+                if(data.token != null) {
+                    $cookies.put("token", data.token);
+                    $location.path("/dashboard");
+                }
+            }, function(error) {
+                console.log(error);
+                alert("Error getting data from server");
+            });
         }
     });

@@ -1,6 +1,9 @@
 angular.module("myApp")
     .service("LoginService", function($http) {
-        this.getTemplates = function() {
-            return $http.get("https://jsonplaceholder.typicode.com/users");
+        this.login = function(mail, password) {
+            return $http({
+                method: 'GET',
+                url: "http://localhost:8080/v1/user/login?mail="+mail+"&password="+password
+            });
         }
     });

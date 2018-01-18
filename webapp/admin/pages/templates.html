@@ -19,6 +19,11 @@
 
     <div class="form-default">
         <div class="form-item">
+            <input type="text" placeholder="Group Name" id="name" name="group_name" ng-model="groupName">
+            <div class="form-item">
+                <!-- <label for="msg">Message:</label> -->
+                <input type="number" name="gradeDifference" step="any" value="7" ng-model="gradeDifference">Max grade difference
+            </div>
             <div class="form-item">
                 <!-- <label for="msg">Message:</label> -->
                 <input type="number" name="gradeDifference" step="any" value="7" ng-model="gradeDifference">Max grade difference
@@ -29,7 +34,7 @@
             </div>
             <div class="form-item">
                 <!-- <label for="msg">Message:</label> -->
-                <button type="button" class="btn btn-submit" ng-click="submit()">Submit <i class="fas fa-sign-in-alt fa-lg"></i></button>
+                <button type="button" class="btn btn-submit" ng-click="submit(gradeDifference, withDescription)">Submit <i class="fas fa-sign-in-alt fa-lg"></i></button>
             </div>
         </div>
     </div>

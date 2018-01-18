@@ -1,5 +1,8 @@
 angular.module("myApp")
-    .controller("GroupsCtrl", function($scope, GroupsService, $timeout) {
+    .controller("GroupsCtrl", function($scope, GroupsService, $timeout, $location, $cookies) {
+        if($cookies.get("token") == null) {
+            $location.path("/");
+        }
         $scope.loading = true;
         $scope.grade = 7;
         $scope.groupName = "";
@@ -18,7 +21,7 @@ angular.module("myApp")
 
         function refreshGroups() {
             $scope.loading = true;
-            GroupsService.getGroups().then(function(data) {
+            GroupsService.getGroups($cookies.get("token")).then(function(data) {
                 $scope.groups = data.data;
                 $timeout(function() {
                     $scope.loading = false;

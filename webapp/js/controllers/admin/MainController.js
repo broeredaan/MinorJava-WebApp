@@ -34,7 +34,10 @@ angular.module("myApp")
         $locationProvider.hashPrefix('');
     })
 
-    .controller("MainCtrl", function($scope, $location) {
+    .controller("MainCtrl", function($scope, $location, $cookies) {
+        if($cookies.get("token") == null) {
+            $location.path("/");
+        }
         $scope.showMenu = false;
         $scope.$on('updateMenu', function(event, mass) {
             $scope.showMenu = mass;
@@ -42,6 +45,7 @@ angular.module("myApp")
 
         $scope.logout = function() {
             $location.path("/");
+            $cookies.remove("token");
         };
 
         $scope.settings = function() {

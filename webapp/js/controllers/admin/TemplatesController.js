@@ -1,5 +1,9 @@
 angular.module("myApp")
-    .controller("TemplatesCtrl", function($scope, TemplateService, $timeout) {
+    .controller("TemplatesCtrl", function($scope, TemplateService, $timeout, $cookies, $location) {
+        if($cookies.get("token") == null) {
+            $location.path("/");
+            alert("You're not logged in.");
+        }
         $scope.loading = true;
         $scope.withDescription = false;
         $scope.$emit('updateMenu', true);
@@ -10,7 +14,7 @@ angular.module("myApp")
 
         function refreshTemplates() {
             $scope.loading = true;
-            TemplateService.getTemplates().then(function(data) {
+            TemplateService.getTemplates($cookies.get("token")).then(function(data) {
                 $scope.templates = data.data;
                 $timeout(function() {
                     $scope.loading = false;
@@ -73,8 +77,7 @@ angular.module("myApp")
             $scope.newPersons.splice(index, 1);
         };
 
-        $scope.submit = function() {
-            console.log($scope.grade);
-            console.log($scope.withDescription);
+        $scope.submit = function(grade, desc, title) {
+            TemplateService.newTemplate(grade, desc, title, $cookies.get("token"))
         }
     });

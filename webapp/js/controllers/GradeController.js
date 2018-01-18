@@ -3,6 +3,18 @@ angular.module("myApp")
 
         $scope.token = null;
         $scope.tempToken = "test";
+        $scope.members = {
+            "members": [],
+            "groupGrade": 7,
+            "gradeDifference": 2
+        };
+        $scope.members.members = [
+            {"name": "Daan"},
+            {"name": "Raymond"},
+            {"name": "Ronald"},
+            {"name": "Joshmar"},
+            {"name": "Jasper"}
+        ];
 
         $scope.$on('$locationChangeStart', function(event) {
             $scope.token = $location.search().token;
