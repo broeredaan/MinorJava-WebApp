@@ -234,4 +234,33 @@ textarea {
   color: #242b3c;
   opacity: 0.5; }
 
+.modal-background {
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  background: rgba(78, 78, 78, 0.73);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 3;
+  display: flex; }
+
+.modal {
+  width: 350px;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  vertical-align: middle;
+  justify-content: center;
+  position: relative; }
+
+.modal-close {
+  background: #242b3c;
+  width: 300px;
+  margin: auto;
+  margin-top: 50px; }
+
 /*# sourceMappingURL=admin.css.map */

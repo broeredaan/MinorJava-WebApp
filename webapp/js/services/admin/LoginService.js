@@ -8,8 +8,8 @@ angular.module("myApp")
             });
         };
 
-        this.checkLogin = function(fail = false) {
-            if($cookies.get("token") == null || fail){
+        this.checkLogin = function(fail = false, path = "") {
+            if(($cookies.get("token") == null || fail) && path !== "/"){
                 this.logout();
                 ModalService.showModal("You're not logged in.");
             }

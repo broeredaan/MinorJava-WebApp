@@ -21,7 +21,7 @@ angular.module("myApp")
 
 
         $scope.newToken = function(token) {
-            if(token != "") {
+            if(token != "" || token != null) {
                 $scope.token = token;
                 $location.search("token", token);
             }

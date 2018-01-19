@@ -1,5 +1,5 @@
-angular.module("myApp").service("ModalService", function() {
-      this.showModal = function(text){
+angular.module("myApp").service("ModalService", function () {
+    this.showModal = function (text) {
         let modalBackground = angular.element("<div class='modal-background'></div>");
         let modalBody = angular.element("<div class='modal'></div>");
         let modalText = angular.element("<p>" + text + "</p>");
@@ -9,9 +9,9 @@ angular.module("myApp").service("ModalService", function() {
         modalBackground.append(modalBody);
         modalBody.append(modalText);
         modalBody.append(closeButton);
-        closeButton.on('click', function() {
-        modalBackground.remove();
-      });
-      }
+        closeButton.on('click', function () {
+            modalBackground.remove();
+        });
+    }
 
 });

@@ -22,7 +22,7 @@ angular.module("myApp")
                     LoginService.checkLogin(true);
                 }
                 else {
-                    alert("Error getting data from server");
+                    ModalService.showModal("Error getting data from server");
                     $scope.loading = false;
                 }
             });

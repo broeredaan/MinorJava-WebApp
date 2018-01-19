@@ -35,7 +35,7 @@ angular.module("myApp")
     })
 
     .controller("MainCtrl", function($scope, $location, $cookies, LoginService) {
-        LoginService.checkLogin();
+        LoginService.checkLogin(false, $location.path());
         $scope.showMenu = false;
         $scope.$on('updateMenu', function(event, mass) {
             $scope.showMenu = mass;
