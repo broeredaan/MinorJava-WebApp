@@ -1,5 +1,5 @@
 angular.module("myApp")
-    .service("LoginService", function($http, $cookies, $location) {
+    .service("LoginService", function($http, $cookies, $location, ModalService) {
         this.login = function(mail, password) {
             //password = sha256(password);
             return $http({
@@ -11,7 +11,7 @@ angular.module("myApp")
         this.checkLogin = function(fail = false) {
             if($cookies.get("token") == null || fail){
                 this.logout();
-                alert("You're not logged in.");
+                ModalService.showModal("You're not logged in.");
             }
         };
 

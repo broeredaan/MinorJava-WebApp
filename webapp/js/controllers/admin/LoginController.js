@@ -1,5 +1,5 @@
 angular.module("myApp")
-    .controller("LoginCtrl", function($scope, $location, LoginService, $cookies) {
+    .controller("LoginCtrl", function($scope, $location, LoginService, ModalService, $cookies) {
         this.title = "DUUNPC";
         $scope.$emit('updateMenu', false);
 
@@ -14,7 +14,7 @@ angular.module("myApp")
                 }
             }, function(error) {
                 console.log(error);
-                alert("Error getting data from server");
+                ModalService.showModal("Error getting data from server");
             });
         }
     });

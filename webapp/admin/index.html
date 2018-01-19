@@ -10,7 +10,7 @@
 
     <title>YourGrade</title>
 
-    <link rel="stylesheet" href="./css/admin.css" />
+    <link rel="stylesheet" href="./css/admin.min.css" />
 
     <link rel="manifest" href="site.webmanifest">
 
@@ -31,13 +31,14 @@
     <script src="./js/services/admin/TemplateService.js"></script>
     <script src="./js/services/admin/GroupsService.js"></script>
     <script src="./js/services/admin/LoginService.js"></script>
+    <script src="./js/services/ModalService.js"></script>
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.3/js/all.js"></script>
 </head>
 
 <body ng-app="myApp" ng-controller="MainCtrl">
 
-<div class="wrapper">
+<div class="wrapper" id="wrapper">
     <div class="sidebar-wrapper" ng-if="showMenu">
         <div class="sidebar">
             <div class="logo">
