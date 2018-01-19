@@ -111,18 +111,27 @@ angular.module("myApp")
             $scope.newPersons.splice(index, 1);
         };
 
-        $scope.next = function(name, grade) {
-            console.log(name);
-            console.log(grade);
+        $scope.next = function(tid, name, deadline, grade) {
             if(name == "" || name == null) {
                 $scope.errorMessage = "Please fill in a title";
             }
             else if(grade < 1 || grade > 10 || grade == null || !angular.isNumber(grade)) {
                 $scope.errorMessage = "Please fill in a proper grade";
             }
+            else if(tid == null){
+                $scope.errorMessage = "No template is selected";
+            }
+            else if(deadline.date == null) {
+                $scope.errorMessage = "Please fill in a date";
+            }
+            else if(deadline.time == null) {
+                $scope.errorMessage = "Please fill in a time";
+            }
             else {
                 $scope.grade = grade;
                 $scope.groupName = name;
+                $scope.deadline = deadline;
+                $scope.selectedTemplate = tid;
                 $scope.state = "members";
                 $scope.title = name;
                 $scope.errorMessage = "";
@@ -135,37 +144,21 @@ angular.module("myApp")
             $scope.title = "Create new group";
         };
 
-        $scope.submit = function() {
+        $scope.submit = function(tid, title, deadline, grade) {
             if($scope.newPersons.length < 2) {
                 $scope.errorMessage = "There are not enough members added to the group."
             }
-            else {
-                console.log($scope.newPersons);
-                $scope.errorMessage = "";
-            }
-
-        };
-
-        $scope.changeGrade = function(grade) {
-            $scope.grade = grade;
-            console.log(grade);
-        };
-
-        $scope.changeGroupName = function(name) {
-            console.log(name);
-            $scope.groupName = name;
-        };
-
-        $scope.submit = function(title, deadline, grade) {
-            if(title == null || title == "") {
+            else if(title == null || title == "") {
                 $scope.errorMessage = "Please fill in a Group name";
             }
             else if(grade == null || grade < 1 || grade > 10) {
                 $scope.errorMessage = "Please fill in a proper number from 1 to 10";
             }
             else {
-                console.log("wegut");
-                GroupsService.newGroup($cookies.get("token"), tid, title, deadline, grade).then(function(res) {
+                let properDate = (deadline.date.getUTCFullYear()+"-"+deadline.date.getUTCMonth()+"-"+deadline.date.getUTCDay());
+                let properTime = (deadline.time.getUTCHours()+":"+deadline.time.getUTCMinutes()+":"+deadline.time.getUTCSeconds());
+                let newDate = properDate + " " + properTime;
+                GroupsService.newGroup($cookies.get("token"), tid, title, newDate, grade, $scope.newPersons).then(function(res) {
                     $scope.isCreateGroup = false;
                     refreshGroups();
                 }, function(error) {

@@ -28,6 +28,19 @@
             {{errorMessage}}
         </div>
         <div class="form-item">
+            <select name="selectTemplate" id="selectTemplate" ng-model="selectedTemplate">
+                <option ng-repeat="template in templates" value="{{template.id}}">{{template.name}}</option>
+            </select>
+        </div>
+        <div class="form-item">
+            <!-- <label for="name">Name:</label> -->
+            <input type="date" placeholder="Date" id="deadline_date" name="deadline" ng-model="deadline.date">
+        </div>
+        <div class="form-item">
+            <!-- <label for="name">Name:</label> -->
+            <input type="time" placeholder="Time" id="deadline_time" name="deadline" ng-model="deadline.time">
+        </div>
+        <div class="form-item">
             <!-- <label for="name">Name:</label> -->
             <input type="text" placeholder="Group Name" id="name" name="template_name" ng-model="groupName">
         </div>
@@ -37,7 +50,7 @@
         </div>
         <div class="form-item">
             <!-- <label for="msg">Message:</label> -->
-            <button type="button" class="btn btn-next" ng-click="next(groupName, grade)">Next <i
+            <button type="button" class="btn btn-next" ng-click="next(selectedTemplate, groupName, deadline, grade)">Next <i
                     class="fas fa-arrow-right fa-lg"></i></button>
         </div>
     </form>
@@ -63,7 +76,7 @@
                     class="fas fa-plus fa-lg"></i></button>
         </div>
         <div class="form-item" ng-if="newPersons.length > 1">
-            <button type="button" class="btn btn-submit" ng-click="submit()">Submit <i
+            <button type="button" class="btn btn-submit" ng-click="submit(selectedTemplate, groupName, deadline, grade)">Submit <i
                     class="fas fa-sign-in-alt fa-lg"></i></button>
         </div>
         <div class="form-item">

@@ -7,17 +7,19 @@ angular.module("myApp")
             });
         };
 
-        this.newGroup = function(token, tid, title, deadline, grade) {
+        this.newGroup = function(token, tid, title, deadline, grade, members) {
+            let data = {
+                token: token,
+                templateId: tid,
+                name: title,
+                deadline: deadline,
+                groupGrade: grade,
+                members: members
+            };
             return $http({
                 method: 'PUT',
                 url: "http://localhost:8080/v1/group/create",
-                data: {
-                    userToken: token,
-                    templateId: tid,
-                    name: title,
-                    deadline: deadline,
-                    groupGrade: grade
-                }
+                data: data
             });
         }
     });
