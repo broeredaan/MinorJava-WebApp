@@ -1,6 +1,7 @@
 angular.module("myApp")
     .service("LoginService", function($http, $cookies, $location) {
         this.login = function(mail, password) {
+            //password = sha256(password);
             return $http({
                 method: 'GET',
                 url: "http://localhost:8080/v1/user/login?mail="+mail+"&password="+password
