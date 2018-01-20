@@ -12,8 +12,6 @@ angular.module("myApp")
                 token: token,
                 ratings: ratings
             };
-            console.log(data);
-
             return $http({
                 method: 'POST',
                 url: "http://localhost:8080/v1/rate/finish",

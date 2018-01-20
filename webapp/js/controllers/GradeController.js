@@ -74,8 +74,6 @@ angular.module("myApp")
                     }
                 });
                 if(ok) {
-                    console.log("Submit THIS!");
-                    console.log(rating);
                     GradeService.sendGrades($scope.token, createProperRatingsToSend($scope.rating.ratings)).then(function(res) {
                         console.log(res);
                     }, function(error) {
@@ -93,9 +91,10 @@ angular.module("myApp")
             let fixedRatings = [];
             ratings.forEach(rate => {
                 fixedRatings.push({
-                    "ratedMemberId": rate.ratedMember.id,
+                    "ratedMember": rate.ratedMember,
                     "grade": rate.grade,
-                    "comment": rate.comment
+                    "comment": rate.comment,
+                    "id": rate.id
                 })
             });
             return fixedRatings;
