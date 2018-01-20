@@ -1,5 +1,5 @@
 angular.module("myApp")
-    .controller("GroupsCtrl", function($scope, GroupsService, TemplateService, LoginService, $timeout, $location, $cookies) {
+    .controller("GroupsCtrl", function($scope, GroupsService, TemplateService, LoginService, ModalService, $timeout, $location, $cookies) {
         LoginService.checkLogin();
         $scope.loading = true;
         $scope.grade = 7;
@@ -30,7 +30,7 @@ angular.module("myApp")
                     LoginService.checkLogin(true);
                 }
                 else {
-                    ModalService.showModal("Error getting data from server");
+                    ModalService.showModal("Error", "Error getting data from server");
                     $scope.loading = false;
                 }
             });
@@ -44,7 +44,7 @@ angular.module("myApp")
                     LoginService.checkLogin(true);
                 }
                 else {
-                    ModalService.showModal("Error getting data from server");
+                    ModalService.showModal("Error", "Error getting data from server");
                     $scope.loading = false;
                 }
             });

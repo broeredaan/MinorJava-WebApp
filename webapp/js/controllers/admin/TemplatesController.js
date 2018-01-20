@@ -1,5 +1,5 @@
 angular.module("myApp")
-    .controller("TemplatesCtrl", function($scope, TemplateService, LoginService, $timeout, $cookies) {
+    .controller("TemplatesCtrl", function($scope, TemplateService, LoginService, ModalService, $timeout, $cookies) {
         LoginService.checkLogin();
         $scope.loading = true;
         $scope.withDescription = false;
@@ -22,7 +22,7 @@ angular.module("myApp")
                     LoginService.checkLogin(true);
                 }
                 else {
-                    ModalService.showModal("Error getting data from server");
+                    ModalService.showModal("Error", "Error getting data from server");
                     $scope.loading = false;
                 }
             });

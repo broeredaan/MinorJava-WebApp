@@ -1,5 +1,5 @@
 angular.module("myApp")
-    .controller("GradeCtrl", function($scope, $location) {
+    .controller("GradeCtrl", function($scope, $location, GradeService) {
 
         $scope.token = null;
         $scope.tempToken = "test";
@@ -17,6 +17,11 @@ angular.module("myApp")
 
         $scope.$on('$locationChangeStart', function(event) {
             $scope.token = $location.search().token;
+            GradeService.getGradeInfo($scope.token).then(function(res) {
+                $scope.members = res;
+            }, function(error) {
+
+            });
         });
 
 
