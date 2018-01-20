@@ -10,7 +10,7 @@
 
     <title>YourGrade</title>
 
-    <link rel="stylesheet" href="./css/admin.min.css" />
+    <link rel="stylesheet" href="./css/admin.css" />
 
     <link rel="manifest" href="site.webmanifest">
 
@@ -31,6 +31,7 @@
     <script src="./js/services/admin/TemplateService.js"></script>
     <script src="./js/services/admin/GroupsService.js"></script>
     <script src="./js/services/admin/LoginService.js"></script>
+    <script src="./js/services/admin/MainService.js"></script>
     <script src="./js/services/ModalService.js"></script>
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.3/js/all.js"></script>
@@ -57,7 +58,7 @@
         </div>
     </div>
 
-    <div ng-view id="view" class="main" ng-if="!isViewSettings">
+    <div ng-view id="view" class="main" ng-if="!isViewSettings && !isNewUser">
 
     </div>
 
@@ -72,7 +73,41 @@
                     <option value="nl">Nederlands</option>
                 </select>
             </div>
+            <button ng-if="isAdmin" class="btn btn-sidebar" ng-click="newUser()">New User <i class="fas fa-plus fa-lg"></i></button>
         </form>
+    </div>
+
+    <div ng-if="isNewUser" class="main">
+        <h1 class="btn-close" ng-click="closeNewUser()"><i class="fa fa-times"></i></h1>
+        <h2>New User</h2>
+        <div class="form-default">
+            <div class="form-item">
+                <!-- <label for="msg">Message:</label> -->
+                <input type="text" placeholder="Name" name="name" ng-model="newUser.username">
+            </div>
+            <div class="form-item">
+                <!-- <label for="msg">Message:</label> -->
+                <input type="email" placeholder="E-mail" name="email" ng-model="newUser.useremail">
+            </div>
+            <div class="form-item">
+                <!-- <label for="msg">Message:</label> -->
+                <input type="checkbox" name="isAdmin" value="Yes" ng-model="newUser.isAdmin">Is an admin
+            </div>
+            <div class="form-item">
+                <!-- <label for="msg">Message:</label> -->
+                <input type="password" placeholder="Password" name="password" ng-model="newUser.password">
+            </div>
+            <div class="form-item">
+                <select name="lang" ng-model="newUser.lang">
+                    <option value="en">English</option>
+                    <option value="nl">Nederlands</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <!-- <label for="msg">Message:</label> -->
+                <button type="button" class="btn btn-submit" ng-click="createNewUser(newUser)">Submit <i class="fas fa-sign-in-alt fa-lg"></i></button>
+            </div>
+        </div>
     </div>
 
 </div>

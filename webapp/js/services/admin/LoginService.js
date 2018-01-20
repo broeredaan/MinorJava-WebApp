@@ -17,6 +17,7 @@ angular.module("myApp")
 
         this.logout = function() {
             $cookies.remove("token");
+            $cookies.remove("isAdmin");
             $location.path("/");
         }
 

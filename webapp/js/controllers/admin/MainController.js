@@ -34,23 +34,58 @@ angular.module("myApp")
         $locationProvider.hashPrefix('');
     })
 
-    .controller("MainCtrl", function($scope, $location, $cookies, LoginService) {
+    .controller("MainCtrl", function($scope, $location, $cookies, LoginService, MainService, ModalService) {
         LoginService.checkLogin(false, $location.path());
         $scope.showMenu = false;
         $scope.$on('updateMenu', function(event, mass) {
             $scope.showMenu = mass;
         });
 
+        $scope.$on('$locationChangeStart', function(event) {
+            console.log("change");
+            console.log($cookies.get("isAdmin"));
+            $scope.isAdmin = $cookies.get("isAdmin");
+        });
+
         $scope.logout = function() {
-            $location.path("/");
-            $cookies.remove("token");
+            $scope.isNewUser = false;
+            $scope.isViewSettings = false;
+            LoginService.logout();
         };
 
         $scope.settings = function() {
             $scope.isViewSettings = true;
+            $scope.isNewUser = false;
         };
 
         $scope.closeSettings = function() {
             $scope.isViewSettings = false;
+            $scope.isNewUser = false;
+        };
+
+        $scope.newUser = function() {
+            $scope.isNewUser = true;
+            $scope.isViewSettings = false;
+        };
+
+        $scope.closeNewUser = function() {
+            $scope.isViewSettings = true;
+            $scope.isNewUser = false;
+        };
+
+        $scope.createNewUser = function(newUser) {
+            if(newUser.username == null || newUser.useremail == null || newUser.password == null || newUser.lang == null){
+                ModalService.showModal("Error", "Please fill in all fields");
+            }
+            else {
+                if(newUser.isAdmin == null) {
+                    newUser.isAdmin = false;
+                }
+                MainService.createNewUser(newUser.username, newUser.useremail, newUser.isAdmin, newUser.password, newUser.lang).then(function(res) {
+                    ModalService.showModal("Succes", "New user: " + name + " correstly created");
+                }, function(error) {
+                    ModalService.showModal("Error", "Error getting data from server");
+                });
+            }
         }
     });
