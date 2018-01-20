@@ -7,17 +7,16 @@ angular.module("myApp")
             });
         };
 
-        this.sendGrades = function(token, rateMemberId, grade, comment) {
+        this.sendGrades = function(token, ratings) {
             let data  ={
                 token: token,
-                ratedMemberId: ratedMemberId,
-                grade: grade,
-                comment: comment,
+                ratings: ratings
             };
+            console.log(data);
 
             return $http({
                 method: 'POST',
-                url: "http://localhost:8080/v1/rate/finish?token="+token,
+                url: "http://localhost:8080/v1/rate/finish",
                 date: data
             });
         }

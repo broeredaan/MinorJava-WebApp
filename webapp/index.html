@@ -23,6 +23,7 @@
     <script src="js/controllers/GradeController.js"></script>
 
     <script src="js/services/GradeService.js"></script>
+    <script src="js/services/ModalService.js"></script>
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.3/js/all.js"></script>
 </head>
@@ -48,27 +49,26 @@
         </div>
 
         <div ng-if="token">
-            <h2>Lorem ipsum</h2>
             <h4>Token: {{token}}</h4>
-            <form action=""  class="form-default" method="post">
+            <h5>Grade points to spent: {{checkTotalGradeCount()}}</h5>
+            <div class="form-default" ng-repeat="rate in rating.ratings">
                 <div class="form-item">
-                    <!-- <label for="name">Name:</label> -->
-                    <input type="text" placeholder="Name" name="user_name">
+                    {{rate.ratedMember.name}}
                 </div>
                 <div class="form-item">
                     <!-- <label for="mail">E-mail:</label> -->
-                    <input type="email"  placeholder="Email" name="user_mail">
+                    <input type="number" min="{{(rating.groupGrade - rating.maxGradeDifference)}}" max="{{(rating.groupGrade + rating.maxGradeDifference)}}"  placeholder="Grade" ng-model="rate.grade">
                 </div>
-                <div class="form-item">
-                    <!-- <label for="mail">E-mail:</label> -->
-                    <input type="number" min="1" max="10"  placeholder="Grade" name="user_grade">
-                </div>
-                <div class="form-item">
+                <div class="form-item" ng-if="rating.isCommentNeeded">
                     <!-- <label for="msg">Message:</label> -->
-                    <textarea id="msg" rows="10" name="user_message"></textarea>
-                    <input type="submit" class="btn btn-submit" value="submit">
+                    <textarea rows="5" ng-model="rate.comment"></textarea>
                 </div>
-            </form>
+            </div>
+            <div class="form-default">
+                <div class="form-item">
+                    <input type="submit" class="btn btn-submit" value="submit" ng-click="submit(rating)">
+                </div>
+            </div>
         </div>
 
     </div>
