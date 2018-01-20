@@ -14,7 +14,7 @@ angular.module("myApp")
                 }
             }, function(error) {
                 console.log(error);
-                ModalService.showModal("Error getting data from server");
+                ModalService.showModal("Error","Error getting data from server");
             });
         }
     });

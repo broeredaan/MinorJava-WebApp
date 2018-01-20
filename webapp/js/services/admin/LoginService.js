@@ -11,7 +11,7 @@ angular.module("myApp")
         this.checkLogin = function(fail = false, path = "") {
             if(($cookies.get("token") == null || fail) && path !== "/"){
                 this.logout();
-                ModalService.showModal("You're not logged in.");
+                ModalService.showModal("Error","You're not logged in.");
             }
         };
 

@@ -95,6 +95,7 @@ nav{
   color:#fff;
   border-radius:4px;
   transition:all .2s ease;
+  display: block;
   &:hover{
     background:lighten($button-background,5%);
     padding:12px;
@@ -295,7 +296,7 @@ textarea{
 
 .modal {
     width: 350px;
-    padding:20px;
+
     box-sizing: border-box;
 
     background: #fff;
@@ -307,9 +308,22 @@ textarea{
     position: relative;
 }
 
+.modal-text{
+  padding:20px;
+}
+
+.modal-heading{
+   width:350px;
+   background:$sidebar-background;
+   margin-top:0;
+   padding:10px;
+   color:#fff;
+}
+
 .modal-close{
   background:$button-background;
   width:300px;
   margin:auto;
   margin-top:50px;
+  margin-bottom:20px;
 }
