@@ -23,7 +23,7 @@
 
 <!-- NEW TEMPLATE -->
 <div ng-if="isCreateTemplate">
-    <button class="btn-close" ng-click="closeCreateGroup()"><i class="fa fa-times"></i></button>
+    <button class="btn-close" ng-click="closeCreateTemplate()"><i class="fa fa-times"></i></button>
     <h2>New template</h2>
     <div class="form-default">
         <div class="form-item error" ng-if="errorMessage">
@@ -33,11 +33,11 @@
           <label for="name">Name:</label>
             <input type="text" placeholder="Template Name" id="name" name="group_name" ng-model="templateName">
             <div class="form-item">
-                <label for="gradeDifference">Max difference:</label>
+                <label>Max difference:</label>
                 <input type="number" min="0" max="10" placeholder="Max grade difference (number)" name="gradeDifference" step="any" value="7" ng-model="gradeDifference">
             </div>
             <div class="form-item">
-                <label for="withDescription">Description required:</label>
+                <label>Description required:</label>
                 <input type="checkbox" name="withDescription" value="Yes" ng-model="withDesciption">
             </div>
             <div class="form-item">
