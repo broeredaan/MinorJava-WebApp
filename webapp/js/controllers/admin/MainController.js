@@ -79,8 +79,8 @@ angular.module("myApp")
                 if(newUser.isAdmin == null) {
                     newUser.isAdmin = false;
                 }
-                MainService.createNewUser(newUser.username, newUser.useremail, newUser.isAdmin, newUser.password, newUser.lang).then(function(res) {
-                    ModalService.showModal("Succes", "New user: " + name + " correstly created");
+                MainService.createNewUser($cookies.get("token"), newUser.username, newUser.useremail, newUser.isAdmin, newUser.password, newUser.lang).then(function(res) {
+                    ModalService.showModal("Succes", "New user: " + name + " correctly created");
                 }, function(error) {
                     ModalService.showModal("Error", "Error getting data from server");
                 });

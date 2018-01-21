@@ -7,8 +7,9 @@ angular.module("myApp")
             });
         };
 
-        this.createNewUser = function(name, mail, isAdmin, password, lang) {
+        this.createNewUser = function(token, name, mail, isAdmin, password, lang) {
             let data = {
+                userToken: token,
                 name: name,
                 email: mail,
                 isAdmin: isAdmin,

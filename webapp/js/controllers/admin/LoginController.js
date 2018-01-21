@@ -13,7 +13,7 @@ angular.module("myApp")
                     if(data.admin == true) {
                         $cookies.put("isAdmin", data.admin);
                     }
-                    $location.path("/dashboard");
+                    $location.path("/groups");
                 }
             }, function(error) {
                 console.log(error);
