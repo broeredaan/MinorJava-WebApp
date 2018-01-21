@@ -2,25 +2,7 @@ angular.module("myApp")
     .controller("GradeCtrl", function($scope, $location, GradeService, ModalService) {
 
         $scope.token = null;
-        $scope.tempToken = "test";
-        /*
-        $scope.rating = {
-            "groupGrade": 7,
-            "isCommentNeeded": true,
-            "maxGradeDifference": 2,
-            "ratings": [
-                {
-                    "id": 1,
-                    "grade": 7,
-                    "comment": "",
-                    "ratedMember": {
-                        "id": 1,
-                        "name": "Daan"
-                    }
-                }
-            ]
-        };
-        */
+        $scope.tempToken = "";
         $scope.rating = {};
 
         $scope.checkTotalGradeCount = function() {
@@ -35,13 +17,26 @@ angular.module("myApp")
         };
 
         $scope.$on('$locationChangeStart', function(event) {
+            $scope.isNew = false;
+            $scope.isOld = false;
+            $scope.isSubmitted = false;
+            $scope.isError = false;
             $scope.token = $location.search().token;
-            GradeService.getGradeInfo($location.search().token).then(function(res) {
-                console.log(res);
-                $scope.rating = res.data;
-            }, function(error) {
-                console.log(error);
-            });
+            if($scope.token != null) {
+                GradeService.getGradeInfo($location.search().token).then(function(res) {
+                    console.log(res);
+                    $scope.isNew = true;
+                    $scope.rating = res.data;
+                }, function(error) {
+                    if(error.status === 401){
+                        $scope.isOld = true;
+                    }
+                    else {
+                        $scope.isError = true;
+                    }
+                    console.log(error);
+                });
+            }
         });
 
 
@@ -76,6 +71,8 @@ angular.module("myApp")
                 if(ok) {
                     GradeService.sendGrades($scope.token, createProperRatingsToSend($scope.rating.ratings)).then(function(res) {
                         console.log(res);
+                        $scope.isNew = false;
+                        $scope.isSubmitted = true;
                     }, function(error) {
                         console.log(error);
                     })

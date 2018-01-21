@@ -50,23 +50,28 @@
 
         <div ng-if="token">
             <h4>Token: {{token}}</h4>
-            <h5>Grade points to spent: {{checkTotalGradeCount()}}</h5>
-            <div class="form-default" ng-repeat="rate in rating.ratings">
-                <div class="form-item">
-                    {{rate.ratedMember.name}}
+            <h5 ng-if="isNew">Grade points to spent: {{checkTotalGradeCount()}}</h5>
+            <h5 ng-if="isOld">This token has already been used to submit grades</h5>
+            <h5 ng-if="isSubmitted">Grades correctly submitted</h5>
+            <h5 ng-if="isError">Incorrect token</h5>
+            <div ng-if="isNew">
+                <div class="form-default" ng-repeat="rate in rating.ratings">
+                    <div class="form-item">
+                        {{rate.ratedMember.name}}
+                    </div>
+                    <div class="form-item">
+                        <!-- <label for="mail">E-mail:</label> -->
+                        <input type="number" min="{{(rating.groupGrade - rating.maxGradeDifference)}}" max="{{(rating.groupGrade + rating.maxGradeDifference)}}"  placeholder="Grade" ng-model="rate.grade">
+                    </div>
+                    <div class="form-item" ng-if="rating.isCommentNeeded">
+                        <!-- <label for="msg">Message:</label> -->
+                        <textarea rows="5" ng-model="rate.comment"></textarea>
+                    </div>
                 </div>
-                <div class="form-item">
-                    <!-- <label for="mail">E-mail:</label> -->
-                    <input type="number" min="{{(rating.groupGrade - rating.maxGradeDifference)}}" max="{{(rating.groupGrade + rating.maxGradeDifference)}}"  placeholder="Grade" ng-model="rate.grade">
-                </div>
-                <div class="form-item" ng-if="rating.isCommentNeeded">
-                    <!-- <label for="msg">Message:</label> -->
-                    <textarea rows="5" ng-model="rate.comment"></textarea>
-                </div>
-            </div>
-            <div class="form-default">
-                <div class="form-item">
-                    <input type="submit" class="btn btn-submit" value="submit" ng-click="submit(rating)">
+                <div class="form-default">
+                    <div class="form-item">
+                        <input type="submit" class="btn btn-submit" value="submit" ng-click="submit(rating)">
+                    </div>
                 </div>
             </div>
         </div>

@@ -15,7 +15,7 @@ angular.module("myApp")
             return $http({
                 method: 'POST',
                 url: "http://localhost:8080/v1/rate/finish",
-                date: data
+                data: data
             });
         }
     });
