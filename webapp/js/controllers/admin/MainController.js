@@ -42,8 +42,6 @@ angular.module("myApp")
         });
 
         $scope.$on('$locationChangeStart', function(event) {
-            console.log("change");
-            console.log($cookies.get("isAdmin"));
             $scope.isAdmin = $cookies.get("isAdmin");
         });
 

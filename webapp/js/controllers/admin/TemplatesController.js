@@ -57,7 +57,6 @@ angular.module("myApp")
                 $scope.errorMessage = "Please fill in a proper number from 0 to 10";
             }
             else {
-                console.log("wegut");
                 TemplateService.newTemplate(grade, desc, title, $cookies.get("token")).then(function(res) {
                     $scope.isCreateTemplate = false;
                     refreshTemplates();

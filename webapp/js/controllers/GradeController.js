@@ -24,7 +24,6 @@ angular.module("myApp")
             $scope.token = $location.search().token;
             if($scope.token != null) {
                 GradeService.getGradeInfo($location.search().token).then(function(res) {
-                    console.log(res);
                     $scope.isNew = true;
                     $scope.rating = res.data;
                 }, function(error) {
@@ -70,7 +69,6 @@ angular.module("myApp")
                 });
                 if(ok) {
                     GradeService.sendGrades($scope.token, createProperRatingsToSend($scope.rating.ratings)).then(function(res) {
-                        console.log(res);
                         $scope.isNew = false;
                         $scope.isSubmitted = true;
                     }, function(error) {
