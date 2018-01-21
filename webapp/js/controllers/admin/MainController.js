@@ -28,7 +28,7 @@ angular.module("myApp")
                 controllerAs: "app"
             })
             .otherwise({
-                templateUrl : "pages/error.html",
+                templateUrl : "admin/pages/error.html",
             });
 
         $locationProvider.hashPrefix('');
