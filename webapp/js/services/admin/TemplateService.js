@@ -18,5 +18,16 @@ angular.module("myApp")
                     isCommentNeeded: desc
                 }
             });
-        }
+        };
+
+        this.deleteTemplate = function(token, template) {
+            let data = {
+                token: token,
+                groupId: template.id
+            };
+            return $http({
+                method: 'DELETE',
+                url: "http://localhost:8080/v1/template/delete?userToken=" + data.token + "&templateId=" + data.groupId
+            });
+        };
     });

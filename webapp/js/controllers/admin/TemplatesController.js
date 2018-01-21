@@ -69,5 +69,15 @@ angular.module("myApp")
                     }
                 });
             }
+        };
+
+        $scope.deleteTemplate = function(template) {
+            TemplateService.deleteTemplate($cookies.get("token"), template).then(function(res) {
+                console.log(res);
+                ModalService.showModal("Remove successful", "The template has been removed successfully");
+            }, function(error) {
+                console.log(error);
+                ModalService.showModal("Error", "Unable to remove template");
+            });
         }
     });

@@ -17,8 +17,8 @@
             <div class="template-box" ng-repeat="group in groups" ng-click="viewGroup(group)">
                 <div class="title">{{group.name}}</div>
                 <div class="info">
-                    <p ng-if="group.progress < 100">Submitted: {{group.progress}}%</p>
-                    <p ng-if="group.progress == 100">Submitted: <b>{{group.progress}}%</b></p>
+                    <p ng-if="group.progress < 100">Submitted: {{group.progress | number:1}}%</p>
+                    <p ng-if="group.progress == 100">Submitted: <b>{{group.progress | number:1}}%</b></p>
                     <p>Group grade: {{group.groupGrade}}</p>
                     <p>Deadline: {{group.deadline | date:"dd/MM/yyyy' at 'HH:mm"}}</p>
                 </div>
@@ -120,15 +120,20 @@
         <p>{{singleGroup.name}}</p>
         <h3>Group id</h3>
         <p>{{singleGroup.id}}</p>
-        <h3>Members {{singleGroup.progress}}%</h3>
-        <span ng-repeat="member in singleGroup.groupMembers">
-            {{member.name}} {{member.hasSubmitted ? "Completed" : "Not Completed"}}<br>
-        </span>
+        <h3>Members {{singleGroup.progress | number:1}}%</h3>
+        <table>
+            <tr ng-repeat="member in singleGroup.groupMembers">
+                <td>{{member.name}}</td>
+                <td>{{member.hasSubmitted ? "Completed" : "Not Completed"}}</td>
+            </tr>
+        </table>
         <h3>Group grade</h3>
         <p>{{singleGroup.groupGrade}}</p>
         <h3>Deadline</h3>
         <p>{{singleGroup.deadline | date:"dd/MM/yyyy' at 'HH:mm"}}</p>
-        <button class="btn btn-remove" ng-click=""><i class="fa fa-trash"></i></button>
-        <button class="btn btn-download" ng-click=""><i class="fa fa-download"></i></button>
+        <button class="btn btn-remove" ng-click="deleteGroup(singleGroup)"><i class="fa fa-trash"></i></button>
+        <button ng-if="!singleGroup.isSend" class="btn btn-sendMails" ng-click="openGroupAndSendMail(singleGroup)"><i class="fa fa-envelope"></i></button>
+        <button ng-if="!singleGroup.isApproved && singleGroup.isSend && singleGroup.progress == 100" class="btn btn-approve" ng-click="approveGroup(singleGroup)"><i class="fa fa-check"></i></button>
+        <button ng-if="singleGroup.isApproved && singleGroup.isSend" class="btn btn-download" ng-click="downloadPDF(singleGroup)"><i class="fa fa-download"></i></button>
     </div>
 </div>

@@ -17,7 +17,12 @@ angular.module("myApp")
                 }
             }, function(error) {
                 console.log(error);
-                ModalService.showModal("Error","Error getting data from server");
+                if(error.status === 401) {
+                    ModalService.showModal("Error","Unrecognized combination of email and password. Please try again");
+                }
+                else {
+                    ModalService.showModal("Error","Error getting data from server");
+                }
             });
         };
 
