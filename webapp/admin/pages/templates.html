@@ -10,7 +10,13 @@
                     <button class="btn-add"><i class="fa fa-plus"></i></button>
                 </div>
             </div>
-            <div class="template-box" ng-repeat="template in templates" ng-click="viewTemplate(template)"><div class="title">{{template.name}}</div></div>
+            <div class="template-box" ng-repeat="template in templates" ng-click="viewTemplate(template)">
+                <div class="title">{{template.name}}</div>
+                <div class="info">
+                    Comment needed: {{template.commentNeeded ? "Yes" : "No"}}<br>
+                    Max grade deviance: {{template.gradeDeviation}}<br>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -44,13 +50,17 @@
 
 <!-- VIEW TEMPLATE -->
 <div ng-if="isViewTemplate">
-    <button class="btn-close" ng-click="closeCreateGroup()"><i class="fa fa-times"></i></button>
+    <button class="btn-close" ng-click="closeViewTemplate()"><i class="fa fa-times"></i></button>
     <h2>Template Details</h2>
     <div class="content-box">
     <h3>Template Name</h3>
     {{singleTemplate.name}}
     <h3>Template id</h3>
     {{singleTemplate.id}}
+    <h3>Comment needed</h3>
+    {{singleTemplate.isCommentNeeded ? "Yes": "No"}}
+    <h3>Grade Deviation</h3>
+    {{singleTemplate.gradeDeviation}}
     <button class="btn btn-remove" ng-click=""><i class="fa fa-trash"></i></button>
   </div>
 </div>

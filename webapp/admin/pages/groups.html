@@ -1,6 +1,10 @@
 <!-- ALL GROUPS -->
 <div ng-if="!isCreateGroup && !isViewGroup">
-    <div ng-if="loading"><div class="loading"><div class="loading-icon"><i class="fas fa-sync fa-spin"></i></div></div></div>
+    <div ng-if="loading">
+        <div class="loading">
+            <div class="loading-icon"><i class="fas fa-sync fa-spin"></i></div>
+        </div>
+    </div>
     <div ng-if="!loading">
         <h2>Groups</h2>
         <div class="template-row">
@@ -12,6 +16,12 @@
             </div>
             <div class="template-box" ng-repeat="group in groups" ng-click="viewGroup(group)">
                 <div class="title">{{group.name}}</div>
+                <div class="info">
+                    <p ng-if="group.progress < 100">Submitted: {{group.progress}}%</p>
+                    <p ng-if="group.progress == 100">Submitted: <b>{{group.progress}}%</b></p>
+                    <p>Group grade: {{group.groupGrade}}</p>
+                    <p>Deadline: {{group.deadline | date:"dd/MM/yyyy' at 'HH:mm"}}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -27,7 +37,7 @@
             {{errorMessage}}
         </div>
         <div class="form-item">
-          <label for="selectTemplate">Select Template</label>
+            <label for="selectTemplate">Select Template</label>
             <select name="selectTemplate" id="selectTemplate" ng-model="selectedTemplate">
                 <option ng-repeat="template in templates" value="{{template.id}}">{{template.name}}</option>
             </select>
@@ -49,7 +59,8 @@
             <input type="number" placeholder="Group grade" min="1" max="10" name="grade" id="grade" ng-model="grade">
         </div>
         <div class="form-item">
-            <button type="button" class="btn btn-next" ng-click="next(selectedTemplate, groupName, deadline, grade)">Next <i
+            <button type="button" class="btn btn-next" ng-click="next(selectedTemplate, groupName, deadline, grade)">
+                Next <i
                     class="fas fa-arrow-right fa-lg"></i></button>
         </div>
     </form>
@@ -91,22 +102,33 @@
         </table>
     </div>
     <div class="form-control" ng-if="newPersons.length > 1">
-      <button type="button" class="btn btn-previous" ng-click="previous()"><i
-              class="fas fa-arrow-left fa-lg"></i> Back</button>
-        <button type="button" class="btn btn-submit" ng-click="submit(selectedTemplate, groupName, deadline, grade)">Submit <i
+        <button type="button" class="btn btn-previous" ng-click="previous()"><i
+                class="fas fa-arrow-left fa-lg"></i> Back
+        </button>
+        <button type="button" class="btn btn-submit" ng-click="submit(selectedTemplate, groupName, deadline, grade)">
+            Submit <i
                 class="fas fa-sign-in-alt fa-lg"></i></button>
     </div>
 </div>
 
-<!-- VIEW TEMPLATE -->
+<!-- VIEW GROUP -->
 <div ng-if="isViewGroup">
-  <button class="btn-close" ng-click="closeCreateGroup()"><i class="fa fa-times"></i></button>
-  <h2>Group Details</h2>
-  <div class="content-box">
-  <h3>Group Name</h3>
-  {{singleGroup.name}}
-  <h3>Group id</h3>
-  {{singleGroup.id}}
-  <button class="btn btn-remove" ng-click=""><i class="fa fa-trash"></i></button>
-
+    <button class="btn-close" ng-click="closeViewGroup()"><i class="fa fa-times"></i></button>
+    <h2>Group Details</h2>
+    <div class="content-box">
+        <h3>Group Name</h3>
+        <p>{{singleGroup.name}}</p>
+        <h3>Group id</h3>
+        <p>{{singleGroup.id}}</p>
+        <h3>Members {{singleGroup.progress}}%</h3>
+        <span ng-repeat="member in singleGroup.groupMembers">
+            {{member.name}} {{member.hasSubmitted ? "Completed" : "Not Completed"}}<br>
+        </span>
+        <h3>Group grade</h3>
+        <p>{{singleGroup.groupGrade}}</p>
+        <h3>Deadline</h3>
+        <p>{{singleGroup.deadline | date:"dd/MM/yyyy' at 'HH:mm"}}</p>
+        <button class="btn btn-remove" ng-click=""><i class="fa fa-trash"></i></button>
+        <button class="btn btn-download" ng-click=""><i class="fa fa-download"></i></button>
+    </div>
 </div>

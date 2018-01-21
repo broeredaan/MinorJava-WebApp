@@ -155,9 +155,17 @@ nav{
 }
 
 .btn-remove{
+  max-width: 50px;
   display: block;
   font-size:15pt;
-  margin-top:10px;
+  margin:10px;
+}
+
+.btn-download{
+  max-width: 50px;
+  display: block;
+  font-size:15pt;
+  margin:10px;
 }
 
 .btn-add{
@@ -227,6 +235,10 @@ nav{
   .add {
     margin-top: 70px;
     text-align: center;
+  }
+  .info {
+    text-align:center;
+    color:$heading-background;
   }
 }
 .template-box:hover{

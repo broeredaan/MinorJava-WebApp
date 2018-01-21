@@ -21,9 +21,21 @@ angular.module("myApp")
             $scope.loading = true;
             GroupsService.getGroups($cookies.get("token")).then(function(data) {
                 $scope.groups = data.data;
+
                 $timeout(function() {
                     $scope.loading = false;
                 }, 750)
+
+                //Add some completion %
+                $scope.groups.forEach(group => {
+                    let progress = 0;
+                    group.groupMembers.forEach(member => {
+                        if(member.hasSubmitted) {
+                            progress += 1;
+                        }
+                    });
+                    group.progress = ((100 / group.groupMembers.length) * progress);
+                });
 
             }, function(error) {
                 if(error.status === 401){
