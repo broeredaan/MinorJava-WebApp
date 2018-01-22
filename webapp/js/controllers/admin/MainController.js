@@ -43,6 +43,8 @@ angular.module("myApp")
 
         $scope.$on('$locationChangeStart', function(event) {
             $scope.isAdmin = $cookies.get("isAdmin");
+            $scope.isViewSettings = false;
+            $scope.isNewUser = false;
         });
 
         $scope.logout = function() {
