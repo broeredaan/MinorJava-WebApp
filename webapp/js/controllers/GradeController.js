@@ -33,7 +33,6 @@ angular.module("myApp")
                     else {
                         $scope.isError = true;
                     }
-                    console.log(error);
                 });
             }
         });

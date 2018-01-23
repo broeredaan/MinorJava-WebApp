@@ -84,7 +84,7 @@ angular.module("myApp")
                         LoginService.checkLogin(true);
                     }
                     else {
-                        $scope.errorMessage = "Something went wrong while creating a new template";
+                        ModalService.showModal("Error", "Something went wrong while creating a new template");
                     }
                 });
             }
@@ -92,11 +92,14 @@ angular.module("myApp")
 
         $scope.deleteTemplate = function(template) {
             TemplateService.deleteTemplate($cookies.get("token"), template).then(function(res) {
-                console.log(res);
                 ModalService.showModal("Remove successful", "The template has been removed successfully");
             }, function(error) {
-                console.log(error);
-                ModalService.showModal("Error", "Unable to remove template");
+                if(error.status === 401){
+                    LoginService.checkLogin(true);
+                }
+                else {
+                    ModalService.showModal("Error", "Unable to remove template");
+                }
             });
         }
     });

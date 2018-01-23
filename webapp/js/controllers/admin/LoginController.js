@@ -16,7 +16,6 @@ angular.module("myApp")
                     $location.path("/groups");
                 }
             }, function(error) {
-                console.log(error);
                 if(error.status === 401) {
                     ModalService.showModal("Error","Unrecognized combination of email and password. Please try again");
                 }
