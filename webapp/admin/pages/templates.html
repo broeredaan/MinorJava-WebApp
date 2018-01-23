@@ -1,28 +1,34 @@
+<!-- Loading -->
+<div ng-if="loading">
+    <div class="loading">
+        <div class="loading-icon">
+            <i class="fas fa-sync fa-spin"></i>
+        </div>
+    </div>
+</div>
+
 <!-- ALL TEMPLATES -->
-<div ng-if="!isCreateTemplate && !isViewTemplate">
-    <div ng-if="loading"><div class="loading"><div class="loading-icon"><i class="fas fa-sync fa-spin"></i></div></div></div>
-    <div ng-if="!loading">
-        <h2>Templates</h2>
-        <div class="template-row">
-            <div class="template-box" ng-click="createTemplate()">
-                <div class="title">NEW TEMPLATE</div>
-                <div class="add">
-                    <button class="btn-add"><i class="fa fa-plus"></i></button>
-                </div>
+<div ng-if="!isCreateTemplate && !isViewTemplate && !loading">
+    <h2>Templates</h2>
+    <div class="template-row">
+        <div class="template-box" ng-click="createTemplate()">
+            <div class="title">NEW TEMPLATE</div>
+            <div class="add">
+                <button class="btn-add"><i class="fa fa-plus"></i></button>
             </div>
-            <div class="template-box" ng-repeat="template in templates" ng-click="viewTemplate(template)">
-                <div class="title">{{template.name}}</div>
-                <div class="info">
-                    Comment needed: {{template.commentNeeded ? "Yes" : "No"}}<br>
-                    Max grade deviance: {{template.gradeDeviation}}<br>
-                </div>
+        </div>
+        <div class="template-box" ng-repeat="template in templates" ng-click="viewTemplate(template)">
+            <div class="title">{{template.name}}</div>
+            <div class="info">
+                Comment needed: {{template.commentNeeded ? "Yes" : "No"}}<br>
+                Max grade deviance: {{template.gradeDeviation}}<br>
             </div>
         </div>
     </div>
 </div>
 
 <!-- NEW TEMPLATE -->
-<div ng-if="isCreateTemplate">
+<div ng-if="isCreateTemplate && !loading">
     <button class="btn-close" ng-click="closeCreateTemplate()"><i class="fa fa-times"></i></button>
     <h2>New template</h2>
     <div class="form-default">
@@ -49,18 +55,20 @@
 </div>
 
 <!-- VIEW TEMPLATE -->
-<div ng-if="isViewTemplate">
+<div ng-if="isViewTemplate && !loading">
     <button class="btn-close" ng-click="closeViewTemplate()"><i class="fa fa-times"></i></button>
     <h2>Template Details</h2>
     <div class="content-box">
-    <h3>Template Name</h3>
-    {{singleTemplate.name}}
-    <h3>Template id</h3>
-    {{singleTemplate.id}}
-    <h3>Comment needed</h3>
-    {{singleTemplate.isCommentNeeded ? "Yes": "No"}}
-    <h3>Grade Deviation</h3>
-    {{singleTemplate.gradeDeviation}}
-    <button class="btn btn-remove" ng-click="deleteTemplate(singleTemplate)"><i class="fa fa-trash"></i></button>
-  </div>
+        <h3>Template Name</h3>
+        {{singleTemplate.name}}
+        <h3>Template id</h3>
+        {{singleTemplate.id}}
+        <h3>Comment needed</h3>
+        {{singleTemplate.isCommentNeeded ? "Yes": "No"}}
+        <h3>Grade Deviation</h3>
+        {{singleTemplate.gradeDeviation}}
+        <button class="btn btn-remove" ng-click="deleteTemplate(singleTemplate)">
+            <i class="fa fa-trash"></i>
+        </button>
+    </div>
 </div>

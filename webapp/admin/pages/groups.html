@@ -1,34 +1,34 @@
-<!-- ALL GROUPS -->
-<div ng-if="!isCreateGroup && !isViewGroup">
-    <div ng-if="loading">
-        <div class="loading">
-            <div class="loading-icon"><i class="fas fa-sync fa-spin"></i></div>
-        </div>
+<!-- Loading -->
+<div ng-if="loading">
+    <div class="loading">
+        <div class="loading-icon"><i class="fas fa-sync fa-spin"></i></div>
     </div>
-    <div ng-if="!loading">
-        <h2>Groups</h2>
-        <div class="template-row">
-            <div class="template-box" ng-click="createGroup()">
-                <div class="title">NEW GROUP</div>
-                <div class="add">
-                    <button class="btn-add"><i class="fa fa-plus"></i></button>
-                </div>
+</div>
+
+<!-- ALL GROUPS -->
+<div ng-if="!isCreateGroup && !isViewGroup && !loading">
+    <h2>Groups</h2>
+    <div class="template-row">
+        <div class="template-box" ng-click="createGroup()">
+            <div class="title">NEW GROUP</div>
+            <div class="add">
+                <button class="btn-add"><i class="fa fa-plus"></i></button>
             </div>
-            <div class="template-box" ng-repeat="group in groups" ng-click="viewGroup(group)">
-                <div class="title">{{group.name}}</div>
-                <div class="info">
-                    <p ng-if="group.progress < 100">Submitted: {{group.progress | number:1}}%</p>
-                    <p ng-if="group.progress == 100">Submitted: <b>{{group.progress | number:1}}%</b></p>
-                    <p>Group grade: {{group.groupGrade}}</p>
-                    <p>Deadline: {{group.deadline | date:"dd/MM/yyyy' at 'HH:mm"}}</p>
-                </div>
+        </div>
+        <div class="template-box" ng-repeat="group in groups" ng-click="viewGroup(group)">
+            <div class="title">{{group.name}}</div>
+            <div class="info">
+                <p ng-if="group.progress < 100">Submitted: {{group.progress | number:1}}%</p>
+                <p ng-if="group.progress == 100">Submitted: <b>{{group.progress | number:1}}%</b></p>
+                <p>Group grade: {{group.groupGrade}}</p>
+                <p>Deadline: {{group.deadline | date:"dd/MM/yyyy' at 'HH:mm"}}</p>
             </div>
         </div>
     </div>
 </div>
 
 <!-- NEW TEMPLATE -->
-<div ng-if="isCreateGroup">
+<div ng-if="isCreateGroup  && !loading">
     <button class="btn-close" ng-click="closeCreateGroup()"><i class="fa fa-times"></i></button>
     <h2>{{title}}<span ng-if="state == 'members'"> ({{grade}})</span></h2>
 
@@ -112,7 +112,7 @@
 </div>
 
 <!-- VIEW GROUP -->
-<div ng-if="isViewGroup">
+<div ng-if="isViewGroup && !loading">
     <button class="btn-close" ng-click="closeViewGroup()"><i class="fa fa-times"></i></button>
     <h2>Group Details</h2>
     <div class="content-box">

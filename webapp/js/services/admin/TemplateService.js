@@ -7,6 +7,13 @@ angular.module("myApp")
             });
         };
 
+        this.getSingleTemplate = function(token, id) {
+            return $http({
+                method: 'GET',
+                url: "http://localhost:8080/v1/template/single?userToken="+token+"&id="+id
+            });
+        };
+
         this.newTemplate = function(grade, desc, title, token) {
             return $http({
                 method: 'PUT',

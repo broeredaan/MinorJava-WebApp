@@ -28,6 +28,25 @@ angular.module("myApp")
             });
         }
 
+        function refreshSingleTemplate(id) {
+            $scope.loading = true;
+            TemplateService.getSingleTemplate($cookies.get("token"), id).then(function(data) {
+                $scope.singleTemplate = data.data;
+                $timeout(function() {
+                    $scope.loading = false;
+                }, 750)
+
+            }, function(error) {
+                if(error.status === 401){
+                    LoginService.checkLogin(true);
+                }
+                else {
+                    ModalService.showModal("Error", "Error getting data from server");
+                    $scope.loading = false;
+                }
+            });
+        }
+
         $scope.createTemplate = function() {
             $scope.isCreateTemplate = true;
         };
@@ -38,7 +57,7 @@ angular.module("myApp")
         };
 
         $scope.viewTemplate = function(template) {
-            $scope.singleTemplate = template;
+            refreshSingleTemplate(template.id);
             $scope.isViewTemplate = true;
         };
 

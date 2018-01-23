@@ -49,6 +49,33 @@ angular.module("myApp")
             });
         }
 
+        function refreshSingleGroup(id) {
+            $scope.loading = true;
+            GroupsService.getSingleGroup($cookies.get("token"), id).then(function(data) {
+                let group = data.data;
+                let progress = 0;
+                group.groupMembers.forEach(member => {
+                    if(member.hasSubmitted) {
+                        progress += 1;
+                    }
+                });
+                group.progress = ((100 / group.groupMembers.length) * progress);
+                $scope.singleGroup = group;
+                console.log(group);
+                $timeout(function() {
+                    $scope.loading = false;
+                }, 750)
+            }, function(error) {
+                if(error.status === 401){
+                    LoginService.checkLogin(true);
+                }
+                else {
+                    ModalService.showModal("Error", "Error getting data from server");
+                    $scope.loading = false;
+                }
+            });
+        }
+
         function refreshTemplates() {
             TemplateService.getTemplates($cookies.get("token")).then(function(data) {
                 $scope.templates = data.data;
@@ -79,7 +106,7 @@ angular.module("myApp")
         };
 
         $scope.viewGroup = function(group) {
-            $scope.singleGroup = group;
+            refreshSingleGroup(group.id);
             $scope.isViewGroup = true;
         };
 
@@ -198,6 +225,7 @@ angular.module("myApp")
         $scope.approveGroup = function(group) {
             GroupsService.approveGroup($cookies.get("token"), group).then(function(res) {
                 console.log(res);
+                refreshSingleGroup(group.id);
                 ModalService.showModal("Approval successful", "The group has been approved successfully");
             }, function(error) {
                 console.log(error);
@@ -220,6 +248,7 @@ angular.module("myApp")
         $scope.openGroupAndSendMail = function(group) {
             GroupsService.openGroupAndSendMail($cookies.get("token"), group).then(function(res) {
                 console.log(res);
+                refreshSingleGroup(group.id);
                 ModalService.showModal("Mail successful", "The mails have been sent successfully");
             }, function(error) {
                 console.log(error);

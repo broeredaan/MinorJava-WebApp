@@ -7,6 +7,13 @@ angular.module("myApp")
             });
         };
 
+        this.getSingleGroup = function(token, id) {
+            return $http({
+                method: 'GET',
+                url: "http://localhost:8080/v1/group/single?userToken="+token+"&id="+id
+            });
+        };
+
         this.newGroup = function(token, tid, title, deadline, grade, members) {
             let data = {
                 token: token,
