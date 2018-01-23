@@ -97,6 +97,20 @@ angular.module("myApp")
 
         $scope.createGroup = function() {
             refreshTemplates();
+            $scope.grade = 7;
+            $scope.groupName = "";
+            $scope.state = "general";
+            $scope.title = "Create new group";
+            $scope.$emit('updateMenu', true);
+            $scope.deadline = null;
+            $scope.selectedTemplate = null;
+
+            $scope.errorMessage = "";
+
+            $scope.name = "";
+            $scope.email = "";
+
+            $scope.newPersons = [];
             $scope.isCreateGroup = true;
         };
 
@@ -195,8 +209,8 @@ angular.module("myApp")
                 $scope.errorMessage = "Please fill in a proper number from 1 to 10";
             }
             else {
-                let properDate = (deadline.date.getUTCFullYear()+"-"+deadline.date.getUTCMonth()+"-"+deadline.date.getUTCDay());
-                let properTime = (deadline.time.getUTCHours()+":"+deadline.time.getUTCMinutes()+":"+deadline.time.getUTCSeconds());
+                let properDate = (deadline.date.getFullYear()+"-"+(deadline.date.getMonth()+1)+"-"+deadline.date.getDate());
+                let properTime = (deadline.time.getHours()+":"+deadline.time.getMinutes()+":"+deadline.time.getSeconds());
                 let newDate = properDate + " " + properTime;
                 GroupsService.newGroup($cookies.get("token"), tid, title, newDate, grade, $scope.newPersons).then(function(res) {
                     $scope.isCreateGroup = false;
