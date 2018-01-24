@@ -2,9 +2,14 @@ angular.module("myApp")
     .service("LoginService", function($http, $cookies, $location, ModalService) {
         this.login = function(mail, password) {
             //password = sha256(password);
+            let data = {
+                mail: mail,
+                password: password
+            };
             return $http({
-                method: 'GET',
-                url: "http://localhost:8080/v1/user/login?mail="+mail+"&password="+password
+                method: 'POST',
+                url: "http://localhost:8080/v1/user/login",
+                data: data
             });
         };
 
