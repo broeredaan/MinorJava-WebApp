@@ -1,62 +1,61 @@
 {
-  "language": {
-    "language": "English",
-    "admin": {
-      "menu": {
-        "templates": "templates",
-        "groups": "groups",
-        "settings": "settings",
-        "log out": "Log out"
-      },
-      "headings": {
-        "templates": "templates",
-        "groups": "groups",
-        "settings": "settings"
-      },
-      "forms": {
-        "form": {
-          "name": "add template",
-          "labels": {
-            "name": "name",
-            "difference": "difference",
-            "comment required": "comment required"
+    "Eng": {
+      "Admin": {
+        "Menu": {
+          "Templates": "Templates",
+          "Groups": "Groups",
+          "Settings": "Settings",
+          "Log out": "Log out"
+        },
+        "Headings": {
+          "Templates": "Templates",
+          "Groups": "Groups",
+          "Settings": "Settings"
+        },
+        "Forms": {
+          "Form": {
+            "Name": "Add template",
+            "Labels": {
+              "Name": "Name",
+              "Difference": "Difference",
+              "Comment required": "Comment required"
+            },
+            "Form": {
+              "Name": "New group",
+              "Labels": {
+                "Name": "Name",
+                "Group grade": "Group grade",
+                "Member name": "Name",
+                "Email": "Email",
+                "Expiration date": "Expiration date",
+                "Expiration time": "Expiration time"
+              }
+            }
           },
-          "form": {
-            "name": "new group",
-            "labels": {
-              "name": "name",
-              "group grade": "group grade",
-              "member name": "name",
-              "email": "email",
-              "expiration date": "expiration date",
-              "expiration time": "expiration time"
+          "Modals": {
+            "Modal": {
+              "Name": "Login error",
+              "Title": "Error",
+              "Text": "You are not logged in"
+            },
+            "Modal": {
+              "Name": "Server error",
+              "Title": "Error",
+              "Text": "Error receiving data from server"
             }
           }
         },
-        "modals": {
-          "modal": {
-            "name": "login error",
-            "title": "Error",
-            "text": "You are not logged in"
+        "User": {
+          "Errors": {
+            "Invalid token": "Invalid token",
+            "Token already used": "Token already used"
           },
-          "modal": {
-            "name": "server error",
-            "title": "Error",
-            "text": "Error receiving data from server"
+          "Info": {
+            "Grade points to spent": "Grade points to spent",
+            "Grades correctly submitted": "Grades correctly submitted"
           }
-        }
-      },
-      "user": {
-        "errors": {
-          "invalid token": "invalid token",
-          "token already used": "token already used"
-        },
-        "info": {
-          "grade points to spent": "grade points to spent",
-          "grades correctly submitted": "Grades correctly submitted"
         }
       }
     }
   }
-}
 
