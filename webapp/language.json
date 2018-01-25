@@ -5,7 +5,7 @@
         "Templates": "Templates",
         "Groups": "Groups",
         "Settings": "Settings",
-        "Log out": "Log out"
+        "LogOut": "Log out"
       },
       "Headings": {
         "Login": "Login",
@@ -13,9 +13,24 @@
         "TemplateDetails": "Template Details",
         "Groups": "Groups",
         "GroupDetails": "Group Details",
-        "Settings": "Settings"
+        "Settings": "Settings",
+        "NewUser":"New user"
       },
       "Forms": {
+        "Languages":{
+          "Labels":{
+            "Language":"Language",
+            "English":"English",
+            "Nederlands":"Nederlands"
+          }
+        },
+        "NewUser":{
+          "Labels":{
+            "Name":"Name",
+            "Email":"E-mail",
+            "isAdmin":"is Admin"
+          }
+        }
         "FormAddTemplate": {
           "Name": "Add template",
           "Labels": {
@@ -93,7 +108,8 @@
       "Submit": "Submit",
       "Next": "Next",
       "Add": "Add",
-      "Login": "Login"
+      "Login": "Login",
+      "AddUser":"Add user"
     }
   }
 }

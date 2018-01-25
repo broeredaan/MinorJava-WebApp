@@ -48,13 +48,13 @@
             </div>
             <nav class="nav">
                 <ul>
-                    <a href="admin/#/templates"><li>Templates <i class="far fa-file fa-lg"></i></li></a>
-                    <a href="admin/#/groups"><li>Groups <i class="fas fa-users fa-lg"></i></li></a>
+                    <a href="admin/#/templates"><li>{{lang.Admin.Menu.Templates}}<i class="far fa-file fa-lg"></i></li></a>
+                    <a href="admin/#/groups"><li>{{lang.Admin.Menu.Groups}} <i class="fas fa-users fa-lg"></i></li></a>
                 </ul>
             </nav>
             <div class="sidebar-bottom">
-                <button class="btn btn-sidebar" ng-click="settings()">Settings <i class="fas fa-cog fa-lg"></i></button>
-                <button class="btn btn-sidebar" ng-click="logout()">Log out <i class="fas fa-sign-out-alt fa-lg"></i></button>
+                <button class="btn btn-sidebar" ng-click="settings()">{{lang.Admin.Menu.Settings}} <i class="fas fa-cog fa-lg"></i></button>
+                <button class="btn btn-sidebar" ng-click="logout()">{{lang.Admin.Menu.LogOut}} <i class="fas fa-sign-out-alt fa-lg"></i></button>
             </div>
         </div>
     </div>
@@ -65,48 +65,47 @@
 
     <div ng-if="isViewSettings" class="main">
         <button class="btn-close" ng-click="closeSettings()"><i class="fa fa-times"></i></button>
-        <h2>Settings</h2>
+        <h2>{{lang.Admin.Headings.Settings}}</h2>
         <form action=""  class="form-default" method="post">
             <div class="form-item">
-                <label>Language</label>
+                <label>{{lang.Admin.Forms.Languages.Labels.Language}}</label>
                 <select ng-model="settingsLang" ng-change="changeLang(settingsLang)">
-                    <option value="Eng">English</option>
-                    <option value="Ned">Nederlands</option>
+                    <option selected value="Eng">{{lang.Admin.Forms.Languages.Labels.English}}</option>
+                    <option value="Ned">{{lang.Admin.Forms.Languages.Labels.Nederlands}}</option>
                 </select>
             </div>
-            <button ng-if="isAdmin" class="btn btn-sidebar" ng-click="newUser()">New User <i class="fas fa-plus fa-lg"></i></button>
+            <button ng-if="isAdmin" class="btn btn-sidebar" ng-click="newUser()">{{lang.Buttons.AddUser}} <i class="fas fa-plus fa-lg"></i></button>
         </form>
     </div>
 
     <div ng-if="isNewUser" class="main">
         <button class="btn-close" ng-click="closeNewUser()"><i class="fa fa-times"></i></button>
-        <h2>New User</h2>
+        <h2>{{lang.Admin.Headings.NewUser}}</h2>
         <div class="form-default">
             <div class="form-item">
-                <!-- <label for="msg">Message:</label> -->
-                <input type="text" placeholder="Name" name="name" ng-model="newUser.username">
+                 <label for="name">{{lang.Admin.Forms.Languages.NewUser.Name}}</label>
+                <input type="text" placeholder="Name" id="name" name="name" ng-model="newUser.username">
+            </div>
+            <div class="form-item">
+                 <label for="email">{{lang.Admin.Forms.Languages.NewUser.Email}}</label>
+                <input type="email" placeholder="E-mail" id="email" name="email" ng-model="newUser.useremail">
+            </div>
+            <div class="form-item">
+                 <label for="isAdmin">{{lang.Admin.Forms.Languages.NewUser.isAdmin}}</label>
+                <input type="checkbox" name="isAdmin" value="Yes" id="isAdmin" ng-model="newUser.isAdmin">Is an admin
             </div>
             <div class="form-item">
                 <!-- <label for="msg">Message:</label> -->
-                <input type="email" placeholder="E-mail" name="email" ng-model="newUser.useremail">
-            </div>
-            <div class="form-item">
-                <!-- <label for="msg">Message:</label> -->
-                <input type="checkbox" name="isAdmin" value="Yes" ng-model="newUser.isAdmin">Is an admin
-            </div>
-            <div class="form-item">
-                <!-- <label for="msg">Message:</label> -->
-                <input type="password" placeholder="Password" name="password" ng-model="newUser.password">
+                <input type="password" placeholder="Password" name="password" id="password" ng-model="newUser.password">
             </div>
             <div class="form-item">
                 <select name="lang" ng-model="newUser.lang">
-                    <option value="en">English</option>
-                    <option value="nl">Nederlands</option>
+                    <option value="en">{{lang.Admin.Forms.Languages.Labels.English}}</option>
+                    <option value="nl">{{lang.Admin.Forms.Languages.Labels.Nederlands}}</option>
                 </select>
             </div>
             <div class="form-item">
-                <!-- <label for="msg">Message:</label> -->
-                <button type="button" class="btn btn-submit" ng-click="createNewUser(newUser)">Submit <i class="fas fa-sign-in-alt fa-lg"></i></button>
+                <button type="button" class="btn btn-submit" ng-click="createNewUser(newUser)">{{lang.Buttons.Submit}} <i class="fas fa-sign-in-alt fa-lg"></i></button>
             </div>
         </div>
     </div>
