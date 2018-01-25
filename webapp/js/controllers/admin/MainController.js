@@ -34,7 +34,7 @@ angular.module("myApp")
         $locationProvider.hashPrefix('');
     })
 
-    .controller("MainCtrl", function($scope, $location, $cookies, LoginService, MainService, ModalService) {
+    .controller("MainCtrl", function($scope, $location, $cookies, LoginService, MainService, ModalService, LangService) {
         LoginService.checkLogin(false, $location.path());
         $scope.showMenu = false;
         $scope.$on('updateMenu', function(event, mass) {
@@ -45,6 +45,9 @@ angular.module("myApp")
             $scope.isAdmin = $cookies.get("isAdmin");
             $scope.isViewSettings = false;
             $scope.isNewUser = false;
+            LangService.getLang().then(res => {
+                console.log(res.data);
+            })
         });
 
         $scope.logout = function() {
