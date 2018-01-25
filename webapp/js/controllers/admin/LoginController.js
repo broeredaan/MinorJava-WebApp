@@ -1,7 +1,9 @@
 angular.module("myApp")
-    .controller("LoginCtrl", function($scope, $location, LoginService, ModalService, $cookies) {
+    .controller("LoginCtrl", function($scope, $location, LoginService, ModalService, LangService, $cookies) {
         this.title = "DUUNPC";
         $scope.$emit('updateMenu', false);
+
+        LangService.getLang().then(res => {$scope.lang = res;});
 
         this.submit = function() {
             let email = this.email;

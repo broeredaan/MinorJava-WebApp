@@ -1,4 +1,4 @@
-angular.module("myApp").service("ModalService", function () {
+angular.module("myApp").service("ModalService", function (LangService) {
     this.showModal = function (heading, text) {
         let modalBackground = angular.element("<div class='modal-background'></div>");
         let modalBody = angular.element("<div class='modal'></div>");

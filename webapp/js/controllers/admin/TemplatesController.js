@@ -1,11 +1,13 @@
 angular.module("myApp")
-    .controller("TemplatesCtrl", function($scope, TemplateService, LoginService, ModalService, $timeout, $cookies) {
+    .controller("TemplatesCtrl", function($scope, TemplateService, LoginService, ModalService, $timeout, $cookies, LangService) {
         LoginService.checkLogin();
         $scope.loading = true;
         $scope.withDescription = false;
         $scope.$emit('updateMenu', true);
 
         $scope.errorMessage = "";
+
+        LangService.getLang().then(res => {$scope.lang = res;});
 
         refreshTemplates();
 

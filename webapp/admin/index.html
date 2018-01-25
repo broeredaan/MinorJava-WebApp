@@ -69,9 +69,9 @@
         <form action=""  class="form-default" method="post">
             <div class="form-item">
                 <label>Language</label>
-                <select>
-                    <option value="en">English</option>
-                    <option value="nl">Nederlands</option>
+                <select ng-model="settingsLang" ng-change="changeLang(settingsLang)">
+                    <option value="Eng">English</option>
+                    <option value="Ned">Nederlands</option>
                 </select>
             </div>
             <button ng-if="isAdmin" class="btn btn-sidebar" ng-click="newUser()">New User <i class="fas fa-plus fa-lg"></i></button>

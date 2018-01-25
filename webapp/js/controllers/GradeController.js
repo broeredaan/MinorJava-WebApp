@@ -1,9 +1,11 @@
 angular.module("myApp")
-    .controller("GradeCtrl", function($scope, $location, GradeService, ModalService) {
+    .controller("GradeCtrl", function($scope, $location, GradeService, ModalService, LangService) {
 
         $scope.token = null;
         $scope.tempToken = "";
         $scope.rating = {};
+
+        LangService.getLang().then(res => {$scope.lang = res;});
 
         $scope.checkTotalGradeCount = function() {
             let points = 0;

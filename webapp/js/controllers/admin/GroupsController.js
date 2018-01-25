@@ -1,5 +1,5 @@
 angular.module("myApp")
-    .controller("GroupsCtrl", function($scope, GroupsService, TemplateService, LoginService, ModalService, $timeout, $location, $cookies) {
+    .controller("GroupsCtrl", function($scope, GroupsService, TemplateService, LoginService, ModalService, $timeout, $location, $cookies, LangService) {
         LoginService.checkLogin();
         $scope.loading = true;
         $scope.grade = 7;
@@ -14,6 +14,8 @@ angular.module("myApp")
         $scope.email = "";
 
         $scope.newPersons = [];
+
+        LangService.getLang().then(res => {$scope.lang = res;});
 
         refreshGroups();
 
