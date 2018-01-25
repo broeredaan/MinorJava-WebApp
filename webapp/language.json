@@ -1,61 +1,100 @@
 {
-    "Eng": {
-      "Admin": {
-        "Menu": {
-          "Templates": "Templates",
-          "Groups": "Groups",
-          "Settings": "Settings",
-          "Log out": "Log out"
-        },
-        "Headings": {
-          "Templates": "Templates",
-          "Groups": "Groups",
-          "Settings": "Settings"
-        },
-        "Forms": {
-          "Form": {
-            "Name": "Add template",
-            "Labels": {
-              "Name": "Name",
-              "Difference": "Difference",
-              "Comment required": "Comment required"
-            },
-            "Form": {
-              "Name": "New group",
-              "Labels": {
-                "Name": "Name",
-                "Group grade": "Group grade",
-                "Member name": "Name",
-                "Email": "Email",
-                "Expiration date": "Expiration date",
-                "Expiration time": "Expiration time"
-              }
-            }
-          },
-          "Modals": {
-            "Modal": {
-              "Name": "Login error",
-              "Title": "Error",
-              "Text": "You are not logged in"
-            },
-            "Modal": {
-              "Name": "Server error",
-              "Title": "Error",
-              "Text": "Error receiving data from server"
-            }
+  "Eng": {
+    "Admin": {
+      "Menu": {
+        "Templates": "Templates",
+        "Groups": "Groups",
+        "Settings": "Settings",
+        "Log out": "Log out"
+      },
+      "Headings": {
+        "Login": "Login",
+        "Templates": "Templates",
+        "TemplateDetails": "Template Details",
+        "Groups": "Groups",
+        "GroupDetails": "Group Details",
+        "Settings": "Settings"
+      },
+      "Forms": {
+        "FormAddTemplate": {
+          "Name": "Add template",
+          "Labels": {
+            "Name": "Name",
+            "Difference": "Difference",
+            "CommentRequired": "Comment required"
           }
         },
-        "User": {
-          "Errors": {
-            "Invalid token": "Invalid token",
-            "Token already used": "Token already used"
+        "FormNewGroup": {
+          "Name": "New group",
+          "Labels": {
+            "SelectTemplate": "Select Template",
+            "Name": "Name",
+            "GroupGrade": "Group grade",
+            "MemberName": "Name",
+            "Email": "Email",
+            "ExpirationDate": "Expiration date",
+            "ExpirationTime": "Expiration time"
           },
-          "Info": {
-            "Grade points to spent": "Grade points to spent",
-            "Grades correctly submitted": "Grades correctly submitted"
+          "info": {
+            "TwoPersonsNeeded": "At least 2 persons are needed to create a group."
           }
         }
+      },
+      "Boxes": {
+        "TemplateBox": {
+          "CommentNeeded": "Comment Needed:",
+          "MaxGradeDeviance": "Max Grade Deviance:"
+        },
+        "GroupBox": {
+          "Submitted": "Submitted:",
+          "GroupGrade": "Group grade:",
+          "Deadline": "Deadline:"
+        }
+      },
+      "Details": {
+        "Templates": {
+          "TemplateName": "Template name",
+          "TemplateId": "Template ID",
+          "CommentNeeded": "Comment needed",
+          "GradeDeviation": "GradeDeviation"
+        },
+        "Groups": {
+          "GroupName":"GroupName",
+          "GroupId":"Group ID",
+          "Members":"Members",
+          "GroupGrade":"Group grade",
+          "Deadline":"Deadline"
+        }
+      },
+      "Modals": {
+        "Modal": {
+          "Name": "Login error",
+          "Title": "Error",
+          "Text": "You are not logged in"
+        },
+        "Modal": {
+          "Name": "Server error",
+          "Title": "Error",
+          "Text": "Error receiving data from server"
+        }
       }
+    },
+    "User": {
+      "Errors": {
+        "Invalid token": "Invalid token",
+        "Token already used": "Token already used"
+      },
+      "Info": {
+        "Grade points to spent": "Grade points to spent",
+        "Grades correctly submitted": "Grades correctly submitted"
+      }
+    },
+    "Buttons": {
+      "Submit": "Submit",
+      "Next": "Next",
+      "Add": "Add",
+      "Login": "Login"
     }
   }
+}
 

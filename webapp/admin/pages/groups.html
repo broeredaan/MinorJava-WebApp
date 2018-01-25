@@ -7,10 +7,10 @@
 
 <!-- ALL GROUPS -->
 <div ng-if="!isCreateGroup && !isViewGroup && !loading">
-    <h2>Groups</h2>
+    <h2>{{lang.Admin.Headings.Groups}}</h2>
     <div class="template-row">
         <div class="template-box" ng-click="createGroup()">
-            <div class="title">NEW GROUP</div>
+            <div class="title">{{lang.Admin.Forms.FormNewGroup.Name}}</div>
             <div class="add">
                 <button class="btn-add"><i class="fa fa-plus"></i></button>
             </div>
@@ -18,10 +18,30 @@
         <div class="template-box" ng-repeat="group in groups" ng-click="viewGroup(group)">
             <div class="title">{{group.name}}</div>
             <div class="info">
-                <p ng-if="group.progress < 100">Submitted: {{group.progress | number:1}}%</p>
-                <p ng-if="group.progress == 100">Submitted: <b>{{group.progress | number:1}}%</b></p>
-                <p>Group grade: {{group.groupGrade}}</p>
-                <p>Deadline: {{group.deadline | date:"dd/MM/yyyy' at 'HH:mm"}}</p>
+                <table ng-if="group.progress < 100">
+                    <tr>
+                        <td>{{lang.Admin.Boxes.GroupBox.Submitted}}</td>
+                        <td>{{group.progress | number:1}}%</td>
+                    </tr>
+                </table>
+                <table ng-if="group.progress == 100">
+                    <tr>
+                        <td>{{lang.Admin.Boxes.GroupBox.Submitted}}</td>
+                        <td>{{group.progress | number:1}}%</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td>{{lang.Admin.Boxes.GroupBox.GroupGrade}}</td>
+                        <td>{{group.groupGrade}}</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td>{{lang.Admin.Boxes.GroupBox.Deadline}}</td>
+                        <td>{{group.deadline | date:"dd/MM/yyyy' at 'HH:mm"}}</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
@@ -37,31 +57,30 @@
             {{errorMessage}}
         </div>
         <div class="form-item">
-            <label for="selectTemplate">Select Template</label>
+            <label for="selectTemplate">{{lang.Admin.Forms.FormNewGroup.Labels.SelectTemplate}}</label>
             <select name="selectTemplate" id="selectTemplate" ng-model="selectedTemplate">
                 <option ng-repeat="template in templates" value="{{template.id}}">{{template.name}}</option>
             </select>
         </div>
         <div class="form-item">
-            <label for="name">Expiration Date:</label>
-            <input type="date" placeholder="Date" id="deadline_date" name="deadline" ng-model="deadline.date">
+            <label for="name">{{lang.Admin.Forms.FormNewGroup.Labels.ExpirationDate}}</label>
+            <input type="date" id="deadline_date" name="deadline" ng-model="deadline.date">
         </div>
         <div class="form-item">
-            <label for="name">Expiration Time:</label>
-            <input type="time" placeholder="Time" id="deadline_time" name="deadline" ng-model="deadline.time">
+            <label for="name">{{lang.Admin.Forms.FormNewGroup.Labels.ExpirationTime}}</label>
+            <input type="time" id="deadline_time" name="deadline" ng-model="deadline.time">
         </div>
         <div class="form-item">
-            <label for="name">Name:</label>
+            <label for="name">{{lang.Admin.Forms.FormNewGroup.Labels.Name}}</label>
             <input type="text" placeholder="Group Name" id="name" name="template_name" ng-model="groupName">
         </div>
         <div class="form-item">
-            <label for="grade">Group grade</label>
+            <label for="name">{{lang.Admin.Forms.FormNewGroup.Labels.GroupGrade}}</label>
             <input type="number" placeholder="Group grade" min="1" max="10" name="grade" id="grade" ng-model="grade">
         </div>
         <div class="form-item">
             <button type="button" class="btn btn-next" ng-click="next(selectedTemplate, groupName, deadline, grade)">
-                Next <i
-                    class="fas fa-arrow-right fa-lg"></i></button>
+                {{lang.Buttons.Next}}<i class="fas fa-arrow-right fa-lg"></i></button>
         </div>
     </form>
     <!-- Second part -->
@@ -69,28 +88,29 @@
         <div class="form-item error" ng-if="errorMessage">
             {{errorMessage}}
         </div>
-        <div class="form-item info" style="width: " ng-if="newPersons.length < 2 && state == 'members'">
-            Atleast 2 persons are needed to create a group.
+        <div class="form-item info" ng-if="newPersons.length < 2 && state == 'members'">
+            {{lang.Admin.Forms.FormNewGroup.info.TwoPersonsNeeded}}
         </div>
         <div class="form-item">
-            <!-- <label for="name">Name:</label> -->
-            <input type="text" placeholder="Name" name="user_name" ng-model="name">
+            <label for="memberName">{{lang.Admin.Forms.FormNewGroup.Labels.MemberName}}</label>
+            <input type="text" placeholder="{{lang.Admin.Forms.FormNewGroup.Labels.MemberName}}" id="memberName"
+                   name="user_name" ng-model="name">
         </div>
         <div class="form-item">
-            <!-- <label for="mail">E-mail:</label> -->
-            <input type="text" placeholder="Email" name="user_mail" ng-model="email">
+            <label for="email">{{lang.Admin.Forms.FormNewGroup.Labels.Email}}</label>
+            <input type="text" placeholder="{{lang.Admin.Forms.FormNewGroup.Labels.MemberName}}" id="email"
+                   name="user_mail" ng-model="email">
         </div>
         <div class="form-item">
-            <!-- <label for="msg">Message:</label> -->
-            <button type="button" class="btn btn-create" ng-click="addPersonToList(name, email)">Add <i
+            <button type="button" class="btn btn-create" ng-click="addPersonToList(name, email)">{{lang.Buttons.Add}} <i
                     class="fas fa-plus fa-lg"></i></button>
         </div>
     </form>
     <div class="members-overview" ng-if="newPersons.length > 0 && state == 'members'">
         <table>
             <tr>
-                <th>Name</th>
-                <th>Email</th>
+                <th>{{lang.Admin.Forms.FormNewGroup.Labels.MemberName}}</th>
+                <th>{{lang.Admin.Forms.FormNewGroup.Labels.Email}}</th>
             </tr>
             <tr ng-repeat="person in newPersons">
                 <td>{{person.name}}</td>
@@ -106,7 +126,7 @@
                 class="fas fa-arrow-left fa-lg"></i> Back
         </button>
         <button type="button" class="btn btn-submit" ng-click="submit(selectedTemplate, groupName, deadline, grade)">
-            Submit <i
+            {{lang.Button.Submit}} <i
                 class="fas fa-sign-in-alt fa-lg"></i></button>
     </div>
 </div>
@@ -114,26 +134,29 @@
 <!-- VIEW GROUP -->
 <div ng-if="isViewGroup && !loading">
     <button class="btn-close" ng-click="closeViewGroup()"><i class="fa fa-times"></i></button>
-    <h2>Group Details</h2>
+    <h2>{{lang.Admin.Headings.GroupDetails}}</h2>
     <div class="content-box">
-        <h3>Group Name</h3>
+        <h3>{{lang.Admin.Details.Groups.GroupName}}</h3>
         <p>{{singleGroup.name}}</p>
-        <h3>Group id</h3>
+        <h3>{{lang.Admin.Details.Groups.GroupId}}</h3>
         <p>{{singleGroup.id}}</p>
-        <h3>Members {{singleGroup.progress | number:1}}%</h3>
+        <h3>{{lang.Admin.Details.Groups.Members}} {{singleGroup.progress | number:1}}%</h3>
         <table>
             <tr ng-repeat="member in singleGroup.groupMembers">
                 <td>{{member.name}}</td>
                 <td>{{member.hasSubmitted ? "Completed" : "Not Completed"}}</td>
             </tr>
         </table>
-        <h3>Group grade</h3>
+        <h3>{{lang.Admin.Details.Groups.GroupGrade}}</h3>
         <p>{{singleGroup.groupGrade}}</p>
-        <h3>Deadline</h3>
+        <h3>{{lang.Admin.Details.Groups.Deadline}}</h3>
         <p>{{singleGroup.deadline | date:"dd/MM/yyyy' at 'HH:mm"}}</p>
         <button class="btn btn-remove" ng-click="deleteGroup(singleGroup)"><i class="fa fa-trash"></i></button>
-        <button ng-if="!singleGroup.isSend" class="btn btn-sendMails" ng-click="openGroupAndSendMail(singleGroup)"><i class="fa fa-envelope"></i></button>
-        <button ng-if="!singleGroup.isApproved && singleGroup.isSend && singleGroup.progress == 100" class="btn btn-approve" ng-click="approveGroup(singleGroup)"><i class="fa fa-check"></i></button>
-        <button ng-if="singleGroup.isApproved && singleGroup.isSend" class="btn btn-download" ng-click="downloadPDF(singleGroup)"><i class="fa fa-download"></i></button>
+        <button ng-if="!singleGroup.isSend" class="btn btn-sendMails" ng-click="openGroupAndSendMail(singleGroup)"><i
+                class="fa fa-envelope"></i></button>
+        <button ng-if="!singleGroup.isApproved && singleGroup.isSend && singleGroup.progress == 100"
+                class="btn btn-approve" ng-click="approveGroup(singleGroup)"><i class="fa fa-check"></i></button>
+        <button ng-if="singleGroup.isApproved && singleGroup.isSend" class="btn btn-download"
+                ng-click="downloadPDF(singleGroup)"><i class="fa fa-download"></i></button>
     </div>
 </div>

@@ -12,7 +12,7 @@
     <h2>{{lang.Admin.Menu.Templates}}</h2>
     <div class="template-row">
         <div class="template-box" ng-click="createTemplate()">
-            <div class="title">NEW TEMPLATE</div>
+            <div class="title"><h2>{{lang.Admin.Forms.FormAddTemplate.Name}}</h2></div>
             <div class="add">
                 <button class="btn-add"><i class="fa fa-plus"></i></button>
             </div>
@@ -20,8 +20,16 @@
         <div class="template-box" ng-repeat="template in templates" ng-click="viewTemplate(template)">
             <div class="title">{{template.name}}</div>
             <div class="info">
-                Comment needed: {{template.commentNeeded ? "Yes" : "No"}}<br>
-                Max grade deviance: {{template.gradeDeviation}}<br>
+                <table>
+                    <tr>
+                        <td>{{lang.Admin.Boxes.TemplateBox.CommentNeeded}}</td>
+                        <td> {{template.commentNeeded ? "Yes" : "No"}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{lang.Admin.Boxes.TemplateBox.MaxGradeDeviance}}</td>
+                        <td>{{template.gradeDeviation}}</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
@@ -30,42 +38,45 @@
 <!-- NEW TEMPLATE -->
 <div ng-if="isCreateTemplate && !loading">
     <button class="btn-close" ng-click="closeCreateTemplate()"><i class="fa fa-times"></i></button>
-    <h2>New template</h2>
+    <h2>{{lang.Admin.Forms.FormAddTemplate.Name}}</h2>
     <div class="form-default">
         <div class="form-item error" ng-if="errorMessage">
             {{errorMessage}}
         </div>
         <div class="form-item">
-          <label for="name">Name:</label>
+            <label for="name">{{lang.Admin.Forms.FormAddTemplate.Labels.Name}}</label>
             <input type="text" placeholder="Template Name" id="name" name="group_name" ng-model="templateName">
             <div class="form-item">
-                <label>Max difference:</label>
-                <input type="number" min="0" max="10" placeholder="Max grade difference (number)" name="gradeDifference" step="any" value="7" ng-model="gradeDifference">
+                <label for="gradeDifference">{{lang.Admin.Forms.FormAddTemplate.Labels.Difference}}</label>
+                <input type="number" min="0" max="10" placeholder="Max grade difference (number)" name="gradeDifference"
+                       id="gradeDifference" step="any" value="7" ng-model="gradeDifference">
             </div>
             <div class="form-item">
-                <label>Description required:</label>
-                <input type="checkbox" name="withDescription" value="Yes" ng-model="withDesciption">
+                <label for="withDescription">{{lang.Admin.Forms.FormAddTemplate.Labels.CommentRequired}}</label>
+                <input type="checkbox" name="withDescription" value="Yes" id="withDescription"
+                       ng-model="withDesciption">
             </div>
             <div class="form-item">
-                <button type="button" class="btn btn-submit" ng-click="submit(gradeDifference, withDescription, templateName)">Submit <i class="fas fa-sign-in-alt fa-lg"></i></button>
+                <button type="button" class="btn btn-submit"
+                        ng-click="submit(gradeDifference, withDescription, templateName)">{{lang.Buttons.Submit}} <i
+                        class="fas fa-sign-in-alt fa-lg"></i></button>
             </div>
         </div>
     </div>
-
 </div>
 
 <!-- VIEW TEMPLATE -->
 <div ng-if="isViewTemplate && !loading">
     <button class="btn-close" ng-click="closeViewTemplate()"><i class="fa fa-times"></i></button>
-    <h2>Template Details</h2>
+    <h2>{{lang.Admin.Headings.TemplateDetails}}</h2>
     <div class="content-box">
-        <h3>Template Name</h3>
+        <h3>{{lang.Admin.Details.Templates.TemplateName}}</h3>
         {{singleTemplate.name}}
-        <h3>Template id</h3>
+        <h3>{{lang.Admin.Details.Templates.TemplateId}}</h3>
         {{singleTemplate.id}}
-        <h3>Comment needed</h3>
+        <h3>{{lang.Admin.Details.Templates.CommentNeeded}}</h3>
         {{singleTemplate.isCommentNeeded ? "Yes": "No"}}
-        <h3>Grade Deviation</h3>
+        <h3>{{lang.Admin.Details.Templates.GradeDeviation}}</h3>
         {{singleTemplate.gradeDeviation}}
         <button class="btn btn-remove" ng-click="deleteTemplate(singleTemplate)">
             <i class="fa fa-trash"></i>
