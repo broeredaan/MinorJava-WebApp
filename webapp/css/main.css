@@ -40,7 +40,7 @@ select {
   input[type="number"]:focus,
   input[type="password"]:focus,
   select:focus {
-    border: 1px solid rgba(58, 67, 87, 0.5); }
+    border: 1px solid rgba(53, 75, 96, 0.5); }
 
 label {
   text-align: left;
@@ -101,9 +101,9 @@ textarea {
   font-weight: 600; }
 
 .btn-submit {
-  background: #424f6d;
+  background: #354b60;
   width: 100%; }
   .btn-submit:hover {
-    background: #4c5b7d; }
+    background: #3e5871; }
 
 /*# sourceMappingURL=main.css.map */

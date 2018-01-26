@@ -94,17 +94,25 @@ nav ul {
   padding: 10px;
   min-height: 35px;
   cursor: pointer;
-  background: #304357;
+  background: #354b60;
   color: #fff;
   border-radius: 4px;
   transition: all .2s ease;
   display: inline-block; }
   .btn:hover {
-    background: #395067;
+    background: #3e5871;
     padding: 12px; }
+  .btn i {
+    margin-left: 5px;
+    margin-right: 5px; }
+  .btn svg {
+    margin-left: 5px;
+    margin-right: 5px; }
 
 .btn-sidebar {
   border-radius: 0;
+  display: block;
+  width: 100%;
   background: #354b60; }
   .btn-sidebar:hover {
     background: #3e5871; }
@@ -161,10 +169,10 @@ nav ul {
     font-size: 28pt; }
 
 .btn-create {
-  background: #424f6d;
+  background: #354b60;
   width: 100%; }
   .btn-create:hover {
-    background: #4c5b7d; }
+    background: #3e5871; }
 
 .btn-create {
   width: 150px; }
@@ -321,7 +329,7 @@ nav ul {
   color: #fff; }
 
 .modal-close {
-  background: #304357;
+  background: #354b60;
   width: 300px;
   margin: 50px auto 20px; }
 
