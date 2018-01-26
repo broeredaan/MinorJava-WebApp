@@ -12,13 +12,13 @@
     <h2>{{lang.Admin.Menu.Templates}}</h2>
     <div class="template-row">
         <div class="template-box" ng-click="createTemplate()">
-            <div class="title"><h2>{{lang.Admin.Forms.FormAddTemplate.Name}}</h2></div>
+            <div class="title"><h3>{{lang.Admin.Forms.FormAddTemplate.Name}}</h3></div>
             <div class="add">
                 <button class="btn-add"><i class="fa fa-plus"></i></button>
             </div>
         </div>
         <div class="template-box" ng-repeat="template in templates" ng-click="viewTemplate(template)">
-            <div class="title">{{template.name}}</div>
+            <div class="title"><h3>{{template.name}}</h3></div>
             <div class="info">
                 <table>
                     <tr>
@@ -54,7 +54,7 @@
             <div class="form-item">
                 <label for="withDescription">{{lang.Admin.Forms.FormAddTemplate.Labels.CommentRequired}}</label>
                 <input type="checkbox" name="withDescription" value="Yes" id="withDescription"
-                       ng-model="withDesciption">
+                       ng-model="withDescription">
             </div>
             <div class="form-item">
                 <button type="button" class="btn btn-submit"

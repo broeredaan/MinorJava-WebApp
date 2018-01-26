@@ -10,13 +10,13 @@
     <h2>{{lang.Admin.Headings.Groups}}</h2>
     <div class="template-row">
         <div class="template-box" ng-click="createGroup()">
-            <div class="title">{{lang.Admin.Forms.FormNewGroup.Name}}</div>
+            <div class="title"><h3>{{lang.Admin.Forms.FormNewGroup.Name}}</h3></div>
             <div class="add">
                 <button class="btn-add"><i class="fa fa-plus"></i></button>
             </div>
         </div>
         <div class="template-box" ng-repeat="group in groups" ng-click="viewGroup(group)">
-            <div class="title">{{group.name}}</div>
+            <div class="title"><h3>{{group.name}}</h3></div>
             <div class="info">
                 <table ng-if="group.progress < 100">
                     <tr>
@@ -27,7 +27,7 @@
                 <table ng-if="group.progress == 100">
                     <tr>
                         <td>{{lang.Admin.Boxes.GroupBox.Submitted}}</td>
-                        <td>{{group.progress | number:1}}%</td>
+                        <td class="group-done">{{group.progress | number:1}}%</td>
                     </tr>
                 </table>
                 <table>
@@ -35,8 +35,6 @@
                         <td>{{lang.Admin.Boxes.GroupBox.GroupGrade}}</td>
                         <td>{{group.groupGrade}}</td>
                     </tr>
-                </table>
-                <table>
                     <tr>
                         <td>{{lang.Admin.Boxes.GroupBox.Deadline}}</td>
                         <td>{{group.deadline | date:"dd/MM/yyyy' at 'HH:mm"}}</td>

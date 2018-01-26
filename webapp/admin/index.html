@@ -10,8 +10,8 @@
 
     <title>YourGrade</title>
 
+    <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/admin.css" />
-    <link rel="manifest" href="site.webmanifest">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.min.js"></script>
@@ -44,12 +44,12 @@
     <div class="sidebar-wrapper" ng-if="showMenu">
         <div class="sidebar">
             <div class="logo">
-                <a href="admin/#/dashboard"><img src="../images/logo_nhlstenden.svg"></a>
+                <a href="admin/#/dashboard"><img src="../images/logo_nhlstenden.svg" alt="logo"></a>
             </div>
             <nav class="nav">
                 <ul>
-                    <a href="admin/#/templates"><li>{{lang.Admin.Menu.Templates}}<i class="far fa-file fa-lg"></i></li></a>
-                    <a href="admin/#/groups"><li>{{lang.Admin.Menu.Groups}} <i class="fas fa-users fa-lg"></i></li></a>
+                    <li> <a href="admin/#/templates">{{lang.Admin.Menu.Templates}}<i class="far fa-file fa-lg"></i></a></li>
+                    <li><a href="admin/#/groups">{{lang.Admin.Menu.Groups}} <i class="fas fa-users fa-lg"></i></a></li>
                 </ul>
             </nav>
             <div class="sidebar-bottom">
@@ -66,7 +66,7 @@
     <div ng-if="isViewSettings" class="main">
         <button class="btn-close" ng-click="closeSettings()"><i class="fa fa-times"></i></button>
         <h2>{{lang.Admin.Headings.Settings}}</h2>
-        <form action=""  class="form-default" method="post">
+        <form action="/"  class="form-default" method="post">
             <div class="form-item">
                 <label>{{lang.Admin.Forms.Languages.Labels.Language}}</label>
                 <select ng-model="settingsLang" ng-change="changeLang(settingsLang)">

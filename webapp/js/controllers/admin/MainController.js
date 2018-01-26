@@ -1,6 +1,9 @@
 angular.module("myApp")
-
+/**
+ * Main controller for application
+ */
     .config(function($routeProvider, $locationProvider) {
+        //Routes
         $routeProvider
             .when("/", {
                 templateUrl : "admin/pages/login.html",
@@ -34,55 +37,85 @@ angular.module("myApp")
         $locationProvider.hashPrefix('');
     })
 
+    /**
+     * Main controller
+     */
     .controller("MainCtrl", function($scope, $location, $cookies, LoginService, MainService, ModalService, LangService, $window) {
+        //Check if user is logged in
         LoginService.checkLogin(false, $location.path());
         $scope.showMenu = false;
         $scope.$on('updateMenu', function(event, mass) {
             $scope.showMenu = mass;
         });
         $scope.settingsLang = $cookies.get("lang");
-
         LangService.getLang().then(res => {$scope.lang = res;});
 
+        /**
+         * Function to handle location change
+         */
         $scope.$on('$locationChangeStart', function(event) {
             $scope.isAdmin = $cookies.get("isAdmin");
             $scope.isViewSettings = false;
             $scope.isNewUser = false;
         });
 
+        /**
+         * Function for logout
+         */
         $scope.logout = function() {
             $scope.isNewUser = false;
             $scope.isViewSettings = false;
             LoginService.logout();
         };
 
+        /**
+         * Function for settings
+         */
         $scope.settings = function() {
             $scope.isViewSettings = true;
             $scope.isNewUser = false;
         };
 
+        /**
+         * Function for closing settings view
+         */
         $scope.closeSettings = function() {
             $scope.isViewSettings = false;
             $scope.isNewUser = false;
         };
 
+        /**
+         * Function to show new user form
+         */
         $scope.newUser = function() {
             $scope.isNewUser = true;
             $scope.isViewSettings = false;
         };
 
+        /**
+         * Function to close new user form
+         */
         $scope.closeNewUser = function() {
             $scope.isViewSettings = true;
             $scope.isNewUser = false;
         };
 
+        /**
+         * Function to change language
+         * @param lang
+         */
         $scope.changeLang = function(lang) {
             $cookies.put("lang", lang);
             $window.location.reload();
             console.log($cookies.get("lang"));
         };
 
+        /**
+         * Function to create a new user
+         * @param newUser
+         */
         $scope.createNewUser = function(newUser) {
+            //Validate input
             if(newUser.username == null || newUser.useremail == null || newUser.password == null || newUser.lang == null){
                 ModalService.showModal("Error", "Please fill in all fields");
             }
@@ -92,7 +125,12 @@ angular.module("myApp")
                 }
                 MainService.createNewUser($cookies.get("token"), newUser.username, newUser.useremail, newUser.isAdmin, newUser.password, newUser.lang).then(function(res) {
                     ModalService.showModal("Succes", "New user: " + name + " correctly created");
-                }, function(error) {
+                },
+                    /**
+                     * Error handling function
+                     * @param error
+                     */
+                    function(error) {
                     ModalService.showModal("Error", "Error getting data from server");
                 });
             }

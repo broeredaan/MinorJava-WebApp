@@ -1,5 +1,14 @@
 angular.module("myApp")
+/**
+ * Service for templates
+ */
     .service("TemplateService", function($http) {
+
+        /**
+         * Get all templates
+         * @param token
+         * @returns {JSON} templates
+         */
         this.getTemplates = function(token) {
             return $http({
                 method: 'GET',
@@ -7,6 +16,12 @@ angular.module("myApp")
             });
         };
 
+        /**
+         * Get a single template
+         * @param token
+         * @param id
+         * @returns {JSON} template
+         */
         this.getSingleTemplate = function(token, id) {
             return $http({
                 method: 'GET',
@@ -14,6 +29,13 @@ angular.module("myApp")
             });
         };
 
+        /**
+         * Create new template
+         * @param grade
+         * @param desc
+         * @param title
+         * @param token
+         */
         this.newTemplate = function(grade, desc, title, token) {
             return $http({
                 method: 'PUT',
@@ -27,6 +49,11 @@ angular.module("myApp")
             });
         };
 
+        /**
+         * Function to delete template
+         * @param token
+         * @param template
+         */
         this.deleteTemplate = function(token, template) {
             let data = {
                 token: token,

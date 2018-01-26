@@ -1,20 +1,44 @@
 angular.module("myApp")
-    .service("GroupsService", function($http) {
-        this.getGroups = function(token) {
+/**
+ * Service for groups
+ */
+    .service("GroupsService", function ($http) {
+
+        /**
+         * Method to get all groups
+         * @param token
+         * @returns {JSON} groups
+         */
+        this.getGroups = function (token) {
             return $http({
                 method: 'GET',
-                url: "http://localhost:8080/v1/group?userToken="+token
+                url: "http://localhost:8080/v1/group?userToken=" + token
             });
         };
 
-        this.getSingleGroup = function(token, id) {
+        /**
+         * Method to get single group
+         * @param token
+         * @param id
+         * @returns {JSON} group
+         */
+        this.getSingleGroup = function (token, id) {
             return $http({
                 method: 'GET',
-                url: "http://localhost:8080/v1/group/single?userToken="+token+"&id="+id
+                url: "http://localhost:8080/v1/group/single?userToken=" + token + "&id=" + id
             });
         };
 
-        this.newGroup = function(token, tid, title, deadline, grade, members) {
+        /**
+         * Method to create new group
+         * @param token
+         * @param tid
+         * @param title
+         * @param deadline
+         * @param grade
+         * @param members
+         */
+        this.newGroup = function (token, tid, title, deadline, grade, members) {
             let data = {
                 token: token,
                 templateId: tid,
@@ -30,7 +54,12 @@ angular.module("myApp")
             });
         };
 
-        this.deleteGroup = function(token, group) {
+        /**
+         * Method to delete a group
+         * @param token
+         * @param group
+         */
+        this.deleteGroup = function (token, group) {
             let data = {
                 token: token,
                 groupId: group.id
@@ -41,7 +70,12 @@ angular.module("myApp")
             });
         };
 
-        this.approveGroup = function(token, group) {
+        /**
+         * Method to approve a group
+         * @param token
+         * @param group
+         */
+        this.approveGroup = function (token, group) {
             let data = {
                 token: token,
                 groupId: group.id
@@ -52,7 +86,14 @@ angular.module("myApp")
             });
         };
 
-        this.downloadPDF = function(token, group) {
+
+        /**
+         * Method to get pdf from group
+         * @param token
+         * @param group
+         * @return {File} pdf with overview
+         */
+        this.downloadPDF = function (token, group) {
             let data = {
                 token: token,
                 groupId: group.id
@@ -64,7 +105,12 @@ angular.module("myApp")
             });
         };
 
-        this.openGroupAndSendMail = function(token, group) {
+        /**
+         * Method to set a group and send mail to members
+         * @param token
+         * @param group
+         */
+        this.openGroupAndSendMail = function (token, group) {
             let data = {
                 userToken: token,
                 groupId: group.id

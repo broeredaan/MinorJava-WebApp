@@ -1,5 +1,14 @@
 angular.module("myApp")
+/**
+ * Main service
+ */
     .service("MainService", function($http) {
+
+        /**
+         * Function to get the settings
+         * @param token
+         * @returns {JSON} settings
+         */
         this.getSettings = function(token) {
             return $http({
                 method: 'GET',
@@ -7,6 +16,15 @@ angular.module("myApp")
             });
         };
 
+        /**
+         * Function create new user
+         * @param token
+         * @param name
+         * @param mail
+         * @param isAdmin
+         * @param password
+         * @param lang
+         */
         this.createNewUser = function(token, name, mail, isAdmin, password, lang) {
             let data = {
                 userToken: token,

@@ -14,23 +14,29 @@
         "Groups": "Groups",
         "GroupDetails": "Group Details",
         "Settings": "Settings",
-        "NewUser":"New user"
+        "NewUser": "New user"
       },
       "Forms": {
-        "Languages":{
-          "Labels":{
-            "Language":"Language",
-            "English":"English",
-            "Nederlands":"Nederlands"
+        "Login": {
+          "Labels": {
+            "Email": "E-mail",
+            "Password": "Password"
           }
         },
-        "NewUser":{
-          "Labels":{
-            "Name":"Name",
-            "Email":"E-mail",
-            "isAdmin":"is Admin"
+        "Languages": {
+          "Labels": {
+            "Language": "Language",
+            "English": "English",
+            "Nederlands": "Nederlands"
           }
-        }
+        },
+        "NewUser": {
+          "Labels": {
+            "Name": "Name",
+            "Email": "E-mail",
+            "isAdmin": "is Admin"
+          }
+        },
         "FormAddTemplate": {
           "Name": "Add template",
           "Labels": {
@@ -74,11 +80,11 @@
           "GradeDeviation": "GradeDeviation"
         },
         "Groups": {
-          "GroupName":"GroupName",
-          "GroupId":"Group ID",
-          "Members":"Members",
-          "GroupGrade":"Group grade",
-          "Deadline":"Deadline"
+          "GroupName": "GroupName",
+          "GroupId": "Group ID",
+          "Members": "Members",
+          "GroupGrade": "Group grade",
+          "Deadline": "Deadline"
         }
       },
       "Modals": {
@@ -96,12 +102,22 @@
     },
     "User": {
       "Errors": {
-        "Invalid token": "Invalid token",
-        "Token already used": "Token already used"
+        "InvalidToken": "Invalid token",
+        "TokenUsed": "This token is already used"
       },
       "Info": {
-        "Grade points to spent": "Grade points to spent",
-        "Grades correctly submitted": "Grades correctly submitted"
+        "NoToken": "No token",
+        "FillInToken": "Please fill in your token below",
+        "PointsToSpent": "Grade points to spent:",
+        "GradesCorrectlySubmitted": "Grades correctly submitted"
+      },
+      "Forms": {
+        "Grade": {
+          "Labels": {
+            "Grade": "Grade",
+            "Comment": "Comment"
+          }
+        }
       }
     },
     "Buttons": {
@@ -109,8 +125,9 @@
       "Next": "Next",
       "Add": "Add",
       "Login": "Login",
-      "AddUser":"Add user"
+      "AddUser": "Add user"
     }
   }
 }
+
 

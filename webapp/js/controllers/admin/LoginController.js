@@ -1,22 +1,33 @@
 angular.module("myApp")
+/**
+ * Controller for login
+ */
     .controller("LoginCtrl", function($scope, $location, LoginService, ModalService, LangService, $cookies) {
         $scope.$emit('updateMenu', false);
-
         LangService.getLang().then(res => {$scope.lang = res;});
-
+        /**
+         * Function to submit
+         */
         this.submit = function() {
             let email = this.email;
             let pass = this.password;
+            //Login
             LoginService.login(email, pass).then(function(data) {
                 data = data.data;
+                //Check if token is set
                 if(data.token != null) {
                     $cookies.put("token", data.token);
-                    if(data.admin == true) {
+                    if(data.admin === true) {
                         $cookies.put("isAdmin", data.admin);
                     }
                     $location.path("/groups");
                 }
-            }, function(error) {
+            },
+                /**
+                 * Error handling function
+                 * @param error
+                 */
+                function(error) {
                 if(error.status === 401) {
                     ModalService.showModal("Error","Unrecognized combination of email and password. Please try again");
                 }
@@ -26,8 +37,13 @@ angular.module("myApp")
             });
         };
 
+        /**
+         * Function to let a user log out
+         */
         this.logout = function() {
+            //Redirect
             $location.path("/");
+            //Remove cookies
             $cookies.remove("token");
             $cookies.remove("isAdmin");
         }

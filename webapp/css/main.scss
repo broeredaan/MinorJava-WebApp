@@ -1,40 +1,36 @@
 $sidebar-background: #242b3c;
 $heading-background: #242b3c;
-$nav-background:#3a4357;
-$body-background:#242b3c;
-$submit-background:#424f6d;
+$nav-background: #3a4357;
+$button-background: #242b3c;
+$button-sidebar-background: #3a4357;
+$submit-background: #424f6d;
 
-html{
-  width:100%;
-  height:100%;
+html {
+  width: 100%;
+  height: 100%;
 }
 
-body{
-  height:100%;
-  padding:0;
-  margin:0;
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
   font-family: 'Montserrat', sans-serif;
-  background: $body-background;
 }
 
-.main{
-  width:100%;
-  height:100%;
-  padding:20px;
-  text-align:center;
-  box-sizing:border-box;
-  color:#fff;
-  margin-top:50px;
+.form-default {
+  padding: 20px;
+  border-radius: 4px;
+  max-width: 450px;
+  margin: auto;
 }
 
-.form-default{
-  padding:20px;
-  border-radius:4px;
-  max-width:450px;
-  margin:auto;
-}
-
-input{
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="time"],
+input[type="number"],
+input[type="password"],
+select {
   border: 0;
   background: #fff;
   border-radius: 4px;
@@ -44,10 +40,25 @@ input{
   margin-bottom: 10px;
   font-size: 12pt;
   color: #242b3c;
+  box-shadow: 1px 1px rgba(86, 86, 86, 0.12941176470588237);
   box-sizing: border-box;
+  outline: none;
+  &:focus {
+    border: 1px solid transparentize($nav-background, 0.5);
+  }
 }
 
-textarea{
+label {
+  text-align: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 15pt;
+  font-weight: 600;
+  display: block;
+}
+
+textarea {
+  outline: none;
   border: 0;
   background: #fff;
   border-radius: 4px;
@@ -56,44 +67,53 @@ textarea{
   margin-bottom: 10px;
   font-size: 12pt;
   color: #242b3c;
+  box-shadow: 1px 1px rgba(86, 86, 86, 0.12941176470588237);
   box-sizing: border-box;
 }
 
-.btn{
-  border:0;
-  margin:auto;
-  cursor:pointer;
-  min-height:35px;
-  background:#242b3c;
-  color:#fff;
-  border-radius:4px;
-  box-sizing:border-box;
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: #242b3c;
+  opacity: 0.5;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #242b3c;
+  opacity: 0.5;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #242b3c;
+  opacity: 0.5;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #242b3c;
+  opacity: 0.5;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+  color: #242b3c;
+  opacity: 0.5;
+}
+
+.btn {
+  border: 0;
+  margin: auto;
+  cursor: pointer;
+  min-height: 35px;
+  background: #242b3c;
+  color: #fff;
+  border-radius: 4px;
+  box-sizing: border-box;
   transition: all .5s ease;
+  font-weight:600;
 }
 
-nav{
-  margin:0;
-  padding:0;
-  position:fixed;
-  width:100%;
-  height:75px;
-  top:0;
-  background:$nav-background;
-  .logo{
-    height:75px;
-    box-sizing:border-box;
-    padding:5px;
-    margin-left:10px;
+.btn-submit {
+  background: $submit-background;
+  width: 100%;
 
+  &:hover {
+    background: lighten($submit-background, 5%);
   }
-}
-
-
-.btn-submit{
-  background:$submit-background;
-  width:100%;
-
- &:hover{
-   background:lighten( $submit-background, 5% );
- }
 }

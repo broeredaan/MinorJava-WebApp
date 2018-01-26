@@ -11,7 +11,7 @@
     <title>YourGrade</title>
 
     <link rel="stylesheet" href="css/main.css" />
-    <link rel="manifest" href="site.webmanifest">
+    <link rel="stylesheet" href="css/user.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.min.js"></script>
@@ -36,12 +36,11 @@
     </nav>
     <div class="main">
         <div ng-if="!token">
-            <h2>No token</h2>
-            <h4>Please fill in your token below</h4>
+            <h2>{{lang.User.Info.NoToken}}</h2>
+            <h4>{{lang.User.Info.FillInToken}}</h4>
             <form action=""  class="form-default" method="post">
                 <div class="form-item">
-                    <!-- <label for="name">Name:</label> -->
-                    <input type="text" placeholder="Name" id="token" name="token" ng-model="tempToken">
+                    <input type="text" placeholder="Token" id="token" name="token" ng-model="tempToken">
                 </div>
                 <div class="form-item">
                     <button type="button" class="btn btn-submit" value="submit" ng-click="newToken(tempToken)">Submit</button>
@@ -51,22 +50,22 @@
 
         <div ng-if="token">
             <h4>Token: {{token}}</h4>
-            <h5 ng-if="isNew">Grade points to spent: {{checkTotalGradeCount()}}</h5>
-            <h5 ng-if="isOld">This token has already been used to submit grades</h5>
-            <h5 ng-if="isSubmitted">Grades correctly submitted</h5>
-            <h5 ng-if="isError">Incorrect token</h5>
+            <h5 ng-if="isNew">{{lang.User.Info.PointsToSpent}} {{checkTotalGradeCount()}}</h5>
+            <h5 ng-if="isOld">{{lang.User.Errors.TokenUsed}}</h5>
+            <h5 ng-if="isSubmitted">{{lang.User.Info.GradesCorrectlySubmitted}}</h5>
+            <h5 ng-if="isError">{{lang.User.Errors.InvalidToken}}</h5>
             <div ng-if="isNew">
                 <div class="form-default" ng-repeat="rate in rating.ratings">
                     <div class="form-item">
                         {{rate.ratedMember.name}}
                     </div>
                     <div class="form-item">
-                        <!-- <label for="mail">E-mail:</label> -->
-                        <input type="number" min="{{(rating.groupGrade - rating.maxGradeDifference)}}" max="{{(rating.groupGrade + rating.maxGradeDifference)}}"  placeholder="Grade" ng-model="rate.grade">
+                         <label for="grade">{{lang.User.Forms.Grade.Labels.Grade}}</label>
+                        <input type="number" id="grade" min="{{(rating.groupGrade - rating.maxGradeDifference)}}" max="{{(rating.groupGrade + rating.maxGradeDifference)}}"  placeholder="Grade" ng-model="rate.grade">
                     </div>
                     <div class="form-item" ng-if="rating.isCommentNeeded">
-                        <!-- <label for="msg">Message:</label> -->
-                        <textarea rows="5" ng-model="rate.comment"></textarea>
+                         <label for="comment">{{lang.User.Forms.Grade.Labels.Comment}}</label>
+                        <textarea rows="5"  id="comment" ng-model="rate.comment"></textarea>
                     </div>
                 </div>
                 <div class="form-default">

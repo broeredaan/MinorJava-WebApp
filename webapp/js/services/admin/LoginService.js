@@ -1,7 +1,9 @@
 angular.module("myApp")
-    .service("LoginService", function($http, $cookies, $location, ModalService) {
-        this.login = function(mail, password) {
-            //password = sha256(password);
+/**
+ * Service for login
+ */
+    .service("LoginService", function ($http, $cookies, $location, ModalService) {
+        this.login = function (mail, password) {
             let data = {
                 mail: mail,
                 password: password
@@ -13,14 +15,26 @@ angular.module("myApp")
             });
         };
 
-        this.checkLogin = function(fail = false, path = "") {
-            if(($cookies.get("token") == null || fail) && path !== "/"){
+        /**
+         * Function to check if user is logged in
+         * @param fail
+         * @param path
+         */
+        this.checkLogin = function (fail = false, path = "") {
+            //Check if token is  set or correct
+            if (($cookies.get("token") == null || fail) && path !== "/") {
+                //Logout if not
                 this.logout();
-                ModalService.showModal("Error","You're not logged in.");
+                //Show modal
+                ModalService.showModal("Error", "You're not logged in.");
             }
         };
 
-        this.logout = function() {
+        /**
+         * Function to log out
+         */
+        this.logout = function () {
+            //Remove cookies
             $cookies.remove("token");
             $cookies.remove("isAdmin");
             $location.path("/");
