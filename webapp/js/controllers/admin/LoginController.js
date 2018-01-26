@@ -2,7 +2,7 @@ angular.module("myApp")
 /**
  * Controller for login
  */
-    .controller("LoginCtrl", function($scope, $location, LoginService, ModalService, LangService, $cookies) {
+    .controller("LoginCtrl", function($scope, $location, LoginService, ModalService, LangService, $cookies,sha256) {
         $scope.$emit('updateMenu', false);
         LangService.getLang().then(res => {$scope.lang = res;});
         /**
@@ -12,7 +12,7 @@ angular.module("myApp")
             let email = this.email;
             let pass = this.password;
             //Login
-            LoginService.login(email, pass).then(function(data) {
+            LoginService.login(email, sha256.convertToSHA256(pass)).then(function(data) {
                 data = data.data;
                 //Check if token is set
                 if(data.token != null) {
