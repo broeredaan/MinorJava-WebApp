@@ -40,7 +40,7 @@ angular.module("myApp")
     /**
      * Main controller
      */
-    .controller("MainCtrl", function($scope, $location, $cookies, LoginService, MainService, ModalService, LangService, $window) {
+    .controller("MainCtrl", function($scope, $location, $cookies, LoginService, MainService, ModalService, LangService, $window,sha256) {
         //Check if user is logged in
         LoginService.checkLogin(false, $location.path());
         $scope.showMenu = false;
@@ -123,7 +123,7 @@ angular.module("myApp")
                 if(newUser.isAdmin == null) {
                     newUser.isAdmin = false;
                 }
-                MainService.createNewUser($cookies.get("token"), newUser.username, newUser.useremail, newUser.isAdmin, newUser.password, newUser.lang).then(function(res) {
+                MainService.createNewUser($cookies.get("token"), newUser.username, newUser.useremail, newUser.isAdmin, sha256.convertToSHA256(newUser.password), newUser.lang).then(function(res) {
                     ModalService.showModal("Succes", "New user: " + name + " correctly created");
                 },
                     /**
