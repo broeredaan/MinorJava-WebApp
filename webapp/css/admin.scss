@@ -1,9 +1,9 @@
 $sidebar-background: #2c3e50;
 $heading-background: #2c3e50;
 $nav-background: lighten(#2c3e50, 5%);
-$button-background: lighten(#2c3e50, 2%);
+$button-background: lighten(#2c3e50, 5%);
 $button-sidebar-background: lighten(#2c3e50, 5%);
-$submit-background: #424f6d;
+$submit-background: lighten(#2c3e50, 5%);
 
 html {
   width: 100%;
@@ -131,13 +131,23 @@ nav {
   display: inline-block;
   &:hover {
     background: lighten($button-background, 5%);
-    padding: 12px;
+    padding:12px;
+  }
+  i{
+    margin-left:5px;
+    margin-right:5px;
+  }
+
+  svg{
+    margin-left:5px;
+    margin-right:5px;
   }
 }
 
 .btn-sidebar {
   border-radius: 0;
-
+  display: block;
+  width:100%;
   background: $button-sidebar-background;
   &:hover {
     background: lighten($button-sidebar-background, 5%);
